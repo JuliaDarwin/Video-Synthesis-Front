@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joshim Akhtar - Video Editor Portfolio</title>
+  
+</head>
+<body>
+  <!-- Navbar -->
+
+  
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-intro">
+        <p>Video Synthesis</p>
+      <h1 class="hero-title">Stories that make waves</h1>
+      <p class="hero-mute">We create video, motion graphics and visual campaigns for ocean science, marine conservation and professional sailing. Built by scientists and filmmakers, Video Synthesis turns complex research, field footage and ocean stories into clear, cinematic content that moves people to care — and act.
+</p>
+      </div>     
+      
+      <div class="hero-buttons">
+        <a href="#showcase" class="btn btn-primary btn-lg">See Our Work</a>
+        <a href="#contact" class="btn btn-outline btn-lg">Book Free Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- why us section -->
+
+  <section class="section section-gray">
+    <div class="container why-us">
+      <div class="section-header">
+        <h2 class="section-title">Why Us</h2>
+        <h3 class="section-subtitle left">Specialized in stories where <span class="blue">science, ocean</span></h3>
+        <h3 class="section-subtitle left"> and impact meet</h3>
+        <p class="left muted">We are not a generic video agency. We understand marine science, conservation language, sailing culture and the pressure of delivering content across platforms. That means less time explaining the basics — and more time shaping stories that are accurate, emotional and useful.</p>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <h3>Scientific accuracy</h3>
+          <p class="muted">We come from marine science and oceanography, so we know how to translate complex ideas without losing rigor.</p>
+        </div>
+        <div class="card">
+          <h3>Visual craft</h3>
+          <p class="muted">We combine editing, motion graphics, design, sound, color and pacing to create content that feels polished and professional.</p>
+        </div>
+        <div class="card">
+          <h3>Campaign thinking</h3>
+          <p class="muted">We think beyond the final video, helping content work across social media, websites, events, reports and stakeholder communications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted By Section -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Trusted By</h2>
+        <!-- <h3 class="section-subtitle">We <span class="blue">love</span> our clients</h3> -->
+        <!-- <p>Trusted by ocean leaders, conservation teams and sailing organizations</p> -->
+      </div>
+      <app-client-logos></app-client-logos>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What we do</h2>
+        <h3 class="section-subtitle">For <span class="blue">ocean-</span>focused stories</h3>
+        <p>We create content that helps science, conservation and sailing organizations explain ideas, build trust and move audiences across platforms.
+</p>
+      </div>
+      <app-services-homepage></app-services-homepage>
+    </div>
+  </section>
+
+   <!-- Showcase Section -->
+  <section id="showcase" class="section section-white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Selected Work</h2>
+        <div class="section-subheader">
+          <h3 class="section-subtitle">Stories <span class="blue">for science,</span></h3>
+        <h3 class="section-subtitle">conservation and sailing</h3>
+         <!-- <p>From offshore racing to marine policy campaigns, we help ocean-focused organizations turn complex stories into content people understand, remember and share.</p> -->
+        </div>
+        
+        <!-- <div class="showcase-filters">
+          <button class="filter-badge filter-orange active">Reels</button>
+          <button class="filter-badge filter-blue">YouTube Edits</button>
+          <button class="filter-badge filter-gray">Ads</button>
+          <button class="filter-badge filter-gray">Documentaries</button>
+        </div> -->
+      </div>
+      <app-selected-work [showCategories]="true" [showOnlyFeatured]="true" [forHomepage]="true"></app-selected-work>
+    </div>
+  </section>
+
+    <!-- process section -->
+  <section class="section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">How We Work</h2>
+        <h3 class="section-subtitle">A <span class="blue">clear</span> process</h3>
+      </div>
+      <div class="cards-process">
+  <div class="card-process">
+    <div class="card-inner">
+      <div class="card-front">
+        <span class="card-number">01</span>
+        <h3>Define the story</h3>
+      </div>
+
+      <div class="card-back">
+        <p>We start with your goals, audience, message and materials. What needs to be understood? Who needs to care? What action should the content support?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-process">
+    <div class="card-inner">
+      <div class="card-front">
+        <span class="card-number">02</span>
+        <h3>Share materials</h3>
+      </div>
+
+      <div class="card-back">
+        <p>We review your footage, references and key messages, then build the story architecture: format, tone, narrative flow, visual needs and platform requirements.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-process">
+    <div class="card-inner">
+      <div class="card-front">
+        <span class="card-number">03</span>
+        <h3>Create and deliver the content</h3>
+      </div>
+
+      <div class="card-back">
+        <p>We edit, design and animate with clarity and care, keeping the process collaborative and focused on the original communication goal.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-process">
+    <div class="card-inner">
+      <div class="card-front">
+        <span class="card-number">04</span>
+        <h3>Post-launch support</h3>
+      </div>
+
+      <div class="card-back">
+        <p>Need translations, additional formats or small adjustments after publication? We provide post-delivery support so the content can keep working beyond launch.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+   <!-- metrics section -->
+   <section class="section section-white">
+  <div class="container">
+    
+   <app-metrics></app-metrics>
+
+  </div>
+</section>
+
+ <!-- Reviews Section -->
+  <section id="reviews" class="section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Reviews</h2>
+        <h3 class="section-subtitle">What <span class="blue">ocean leaders</span> say about us</h3>
+      </div>
+      <app-reviews-homepage></app-reviews-homepage>
+      <div class="reviews-cta">
+        <a href="#" class="btn btn-outline-orange">See More Reviews on ?????? ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="section section-white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Team</h2>
+        <div class="section-subheader">
+          <h3 class="section-subtitle">Small studio,</h3>
+        <h3 class="section-subtitle blue">Specialist expertise</h3>
+        </div>
+        
+
+      </div>
+      
+      <app-team-about [showShortBio]="true"></app-team-about>
+      
+     
+    </div>
+  </section>
+
+ 
+  <!-- FAQs Section -->
+   <section id="faqs" class="section section-gray">
+    <div class="container-small">
+      <div class="section-header">
+        <h2 class="section-title">FAQs</h2>
+        <h3 class="section-subtitle">Frequently Asked Questions</h3>
+      </div>
+       <app-faqs></app-faqs>
+    </div>
+  </section>
+
+
+  <!-- CTA Section -->
+  <app-cta-section></app-cta-section>
+
+
+</body>
+</html>

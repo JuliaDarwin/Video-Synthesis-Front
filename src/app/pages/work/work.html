@@ -1,0 +1,44 @@
+
+
+<section id="home" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-intro">
+        <p>Video Synthesis</p>
+      <h1 class="hero-title">Selected Ocean Stories</h1>
+      <p class="hero-mute">Films, motion graphics, infographics and digital campaigns for science, conservation and professional sailing.</p>
+      </div>     
+    </div>
+  </section>
+  <section class="section section-white">
+    <div class="container">
+      <h2 class="section-title">Featured Case Studies</h2>
+      <h3 class="section-subtitle">Our <span class="blue">Best</span>  Work</h3>
+      <div class="cards">
+          <app-selected-work [showOnlyFeatured]="true" [isAnimated]="false"></app-selected-work>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-gray">
+    <div class="container">
+      <h2 class="section-title">More Projects</h2>
+      <h3 class="section-subtitle">See <span class="blue">More</span> Stories</h3>
+      <p class="sub-text">A selection of films, edits, explainers, social media visuals and motion graphics created for ocean-focused organizations, campaigns and sailing teams.</p>
+      <div class="cards">
+          <!-- <div class="card">
+              <p>title</p>
+              <p>client</p>
+              <p>category</p>
+              <p>description</p>
+              <p>CTA</p>
+          </div>> -->
+          <app-selected-work class="more-projects" [isAnimated]="false"></app-selected-work>
+      </div>
+    </div>
+  </section>
+   <!-- CTA Section -->
+    <app-cta-section 
+    title="Need a story shaped like this?"
+    text="Tell us what you're working on and we'll help you find the right format, scope and next step."
+    btn1="Start a Project"></app-cta-section>

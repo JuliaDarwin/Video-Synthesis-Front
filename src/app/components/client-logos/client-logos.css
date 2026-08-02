@@ -1,0 +1,79 @@
+/* .clients-slide {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+} */
+
+.clients-slide {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px;
+}
+
+.logo-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+    gap: 2rem;
+
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* 
+      Because we duplicated the logos, the total width is 2x.
+      Moving it by exactly -50% shifts one entire set out of view, 
+      matching the starting point perfectly before it loops.
+    */
+        transform: translateX(-50%);
+    }
+}
+
+.client-logo {
+    height: 64px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: all 0.3s;
+}
+
+.client-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.client-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.client-logo span {
+    color: #6b7280;
+    font-weight: 500;
+}
+
+@media (min-width: 768px) {
+
+    .clients-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+
+    .clients-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+}
