@@ -53,3 +53,48 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+/* SECCIO SERVEIS */
+
+article {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding-bottom: 3rem;
+}
+
+.service-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.service-picture {
+    width: 100%;
+}
+
+.service-picture img {
+    width: 100%;
+    height: 100%;
+
+}
+
+
+
+.included-list ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+.best-for-list ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.best-for-item {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    list-style: none;
+    text-align: center;
+}

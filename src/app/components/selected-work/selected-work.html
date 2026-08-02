@@ -30,35 +30,93 @@
 </div>
 } @else if (showOnlyFeatured && forHomepage) {
   <div class="featured-homepage" [class.grid-layout]="!isAnimated">
-  @for (item of filteredWorkItems; track item.title) {
-    @if (item.isShowCase) {
-      <div class="slide" [class.animated]="isAnimated">
-        <div class="pic-wrapper">
-          <img [src]="item.picture">
-          <div class="pic-overlay">
-            <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study">View Case Study</a>
-          </div>
-        </div>
-        
-        <div class="showcase-item">
-          <div class="project-intro">
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.description }}</p>
-          </div>
-          
-          @if (showCategories) {
-            <div class="showcase-filters">
-              @for (tag of item.tags; track tag) {
-                <button class="filter-badge filter-blue">{{ tag }}</button>
-              }
+    @if (isAnimated) {
+      <div class="marquee-track animated">
+        @for (item of filteredWorkItems; track item.title) {
+          @if (item.isShowCase) {
+            <div class="slide">
+              <div class="pic-wrapper">
+                <img [src]="item.picture" [alt]="item.title">
+                <div class="pic-overlay">
+                  <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study">View Case Study</a>
+                </div>
+              </div>
+              
+              <div class="showcase-item">
+                <div class="project-intro">
+                  <h4>{{ item.title }}</h4>
+                  <p>{{ item.description }}</p>
+                </div>
+                
+                @if (showCategories) {
+                  <div class="showcase-filters">
+                    @for (tag of item.tags; track tag) {
+                      <button class="filter-badge filter-blue">{{ tag }}</button>
+                    }
+                  </div>
+                }
+              </div>
             </div>
           }
-        </div>
+        }
+        @for (item of filteredWorkItems; track item.title + '-dup') {
+          @if (item.isShowCase) {
+            <div class="slide">
+              <div class="pic-wrapper">
+                <img [src]="item.picture" [alt]="item.title">
+                <div class="pic-overlay">
+                  <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study">View Case Study</a>
+                </div>
+              </div>
+              
+              <div class="showcase-item">
+                <div class="project-intro">
+                  <h4>{{ item.title }}</h4>
+                  <p>{{ item.description }}</p>
+                </div>
+                
+                @if (showCategories) {
+                  <div class="showcase-filters">
+                    @for (tag of item.tags; track tag) {
+                      <button class="filter-badge filter-blue">{{ tag }}</button>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        }
       </div>
+    } @else {
+      @for (item of filteredWorkItems; track item.title) {
+        @if (item.isShowCase) {
+          <div class="slide">
+            <div class="pic-wrapper">
+              <img [src]="item.picture" [alt]="item.title">
+              <div class="pic-overlay">
+                <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study">View Case Study</a>
+              </div>
+            </div>
+            
+            <div class="showcase-item">
+              <div class="project-intro">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.description }}</p>
+              </div>
+              
+              @if (showCategories) {
+                <div class="showcase-filters">
+                  @for (tag of item.tags; track tag) {
+                    <button class="filter-badge filter-blue">{{ tag }}</button>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+      }
     }
-    
-  }
-</div>
+  </div>
 } @else if(showOnlyFeatured && !forHomepage) {
 <div class="featured-work-page">
   @for (item of filteredWorkItems; track item.title) {

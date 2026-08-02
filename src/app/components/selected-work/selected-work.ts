@@ -46,6 +46,7 @@ export class SelectedWork implements OnInit {
         }
       ],
       videoUrl: 'https://www.youtube.com/embed/PbgKEjNBHqM',
+      picture: 'malizia.webp',
       slug: 'living-lakes',
       isShowCase: true
     },

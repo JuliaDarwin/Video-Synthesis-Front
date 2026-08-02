@@ -9,6 +9,45 @@
     </div>
   </section>
   <section>
+    <div class="container">
+      @for (service of services; track $index) {
+        <article>
+          <div class="service-picture">
+            <img [src]="service.image" alt="{{service.title}}">
+          </div>
+          <div class="service-info">
+            <p>Service {{service.id}}</p>
+            <h2>{{ service.title }}</h2>
+            <p class="description">{{ service.description }}</p>
+            <div class="service-included">
+              <h3>Includes</h3>
+              <div class="included-list">
+                <ul>
+                  @for (item of service.includes; track $index) {
+                    <li>{{ item }}</li>
+                  }
+                </ul>
+              </div>
+            </div>
+            <div class="service-best-for">
+              <h3>Best for:</h3>
+              <div class="best-for-list">
+                <ul>
+                @for (item of service.bestFor; track $index) {
+                  <li class="best-for-item">{{ item }}</li>
+                }
+              </ul>
+              </div>
+              
+            </div>
+          </div>
+          
+        </article>
+        
+      }
+    </div>
+  </section>
+  <section>
     <app-cta-section
     title="Not sure what you need yet?"
     text="Tell us what you're working on and we'll help you find the right format, scope and next step."
