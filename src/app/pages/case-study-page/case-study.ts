@@ -7,7 +7,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './case-study.html',
-  styleUrl: './case-study.css'
+  styleUrl: './case-study.css',
 })
 export class CaseStudy implements OnInit {
   projectSlug: string = '';
@@ -17,28 +17,27 @@ export class CaseStudy implements OnInit {
   constructor(
     private router: Router,
     private aRoute: ActivatedRoute,
-    private sanitizer: DomSanitizer
-  ) { }
+    private sanitizer: DomSanitizer,
+  ) {}
 
   ngOnInit(): void {
-    this.projectSlug = this.aRoute.snapshot.paramMap.get("projectName") || "";
+    this.projectSlug = this.aRoute.snapshot.paramMap.get('projectName') || '';
     if (this.projectSlug) {
-      this.projectItem = this.workItems.find(item => item.slug === this.projectSlug);
+      this.projectItem = this.workItems.find((item) => item.slug === this.projectSlug);
       if (this.projectItem) {
-        this.safeVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.projectItem.videoUrl);
+        this.safeVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+          this.projectItem.videoUrl,
+        );
       }
     }
   }
   workItems: any[] = [
     {
       title: 'Living Lakes',
-      description: 'Climate and sailing storytelling for one of the most recognizable teams in offshore racing.',
+      description:
+        'Climate and sailing storytelling for one of the most recognizable teams in offshore racing.',
       period: '2023-ongoing',
-      services: [
-        'Digital Communications',
-        'Environmental storytelling',
-        'Social media content'
-      ],
+      services: ['Digital Communications', 'Environmental storytelling', 'Social media content'],
       website: 'https://www.team-malizia.com/',
       picture: 'malizia.webp',
       videoUrl: 'https://www.youtube.com/embed/PbgKEjNBHqM',
@@ -62,20 +61,20 @@ export class CaseStudy implements OnInit {
         'Webinar promotion assets',
         'Infographics',
         'Digital communications planning',
-        'Campaign adaptation'
+        'Campaign adaptation',
       ],
       results: [
         'Stronger digital presence for international conservation work',
         'More consistent communication across channels',
         'Clearer storytelling around lakes, wetlands and biodiversity',
-        'Increased visibility for project activities, resources and events'
+        'Increased visibility for project activities, resources and events',
       ],
       relatedServices: [
         'Digital Communications Strategy',
         'Video Editing & Post-Production',
         'Infographics & Visual Design',
-        'Science Storytelling & Scriptwriting'
-      ]
+        'Science Storytelling & Scriptwriting',
+      ],
     },
 
     {
@@ -83,11 +82,7 @@ export class CaseStudy implements OnInit {
       description:
         'Helping transform offshore sailing, climate science and team stories into compelling video content for international audiences.',
       period: '2023-ongoing',
-      tags: [
-        'Sailing storytelling',
-        'Climate Communication',
-        'Video Editing'
-      ],
+      tags: ['Sailing storytelling', 'Climate Communication', 'Video Editing'],
       website: 'https://www.team-malizia.com/',
       picture: 'malizia.webp',
       videoUrl: 'https://www.youtube.com/embed/PbgKEjNBHqM',
@@ -110,19 +105,19 @@ export class CaseStudy implements OnInit {
         'Motion graphics',
         'Subtitles',
         'Platform-ready exports',
-        'Visual storytelling support'
+        'Visual storytelling support',
       ],
       results: [
         'Stronger storytelling around sailing, climate and team identity',
         'Content adapted for international digital audiences',
-        'Clearer connection between offshore racing and ocean impact'
+        'Clearer connection between offshore racing and ocean impact',
       ],
       relatedServices: [
         'Video Editing & Post-Production',
         'Motion Graphics & Animation',
         'Science Storytelling & Scriptwriting',
-        'Digital Communications Strategy'
-      ]
+        'Digital Communications Strategy',
+      ],
     },
 
     {
@@ -130,11 +125,7 @@ export class CaseStudy implements OnInit {
       description:
         'Creating clear, social-first visual content to support Mediterranean marine protection and campaign communication.',
       client: 'whoever',
-      tags: [
-        'Marine Conservation',
-        'Campaign Visuals',
-        'Social media content'
-      ],
+      tags: ['Marine Conservation', 'Campaign Visuals', 'Social media content'],
       videoUrl: 'https://www.youtube.com/embed/PbgKEjNBHqM',
       slug: 'med-star-alliance',
       isShowCase: true,
@@ -155,31 +146,27 @@ export class CaseStudy implements OnInit {
         'Infographics',
         'Copy support',
         'Platform adaptations',
-        'Visual consistency across campaign materials'
+        'Visual consistency across campaign materials',
       ],
       results: [
         'Clearer communication around Mediterranean marine protection',
         'More consistent campaign visuals',
         'Social-ready assets for advocacy and awareness',
-        'Stronger translation of policy and science into public-facing content'
+        'Stronger translation of policy and science into public-facing content',
       ],
       relatedServices: [
         'Infographics & Visual Design',
         'Digital Communications Strategy',
         'Science Storytelling & Scriptwriting',
-        'Video Editing & Post-Production'
-      ]
+        'Video Editing & Post-Production',
+      ],
     },
 
     {
       title: 'Prova',
       description:
         'Creating clear, social-first visual content to support Mediterranean marine protection and campaign communication.',
-      tags: [
-        'Marine Conservation',
-        'Campaign Visuals',
-        'Social media content'
-      ],
+      tags: ['Marine Conservation', 'Campaign Visuals', 'Social media content'],
       videoUrl: 'https://www.youtube.com/embed/PbgKEjNBHqM',
       slug: 'prova',
       isShowCase: false,
@@ -193,8 +180,8 @@ export class CaseStudy implements OnInit {
       creativeApproach: '',
       deliverables: [],
       results: [],
-      relatedServices: []
-    }
+      relatedServices: [],
+    },
   ];
   // private formatProjectName(slug: string): string {
   //   return slug

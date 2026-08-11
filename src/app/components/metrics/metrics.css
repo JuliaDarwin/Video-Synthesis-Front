@@ -2,75 +2,75 @@
 
 /* Container Spacing */
 .section-white {
-    background-color: var(--background-white);
-    padding: 6rem 2rem;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-white);
+  padding: 6rem 2rem;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* The Grid Layout */
 .metrics-minimal-grid {
-    display: grid;
-    /* Auto-fits into 2 columns on mobile, 4 on desktop */
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 3rem 1.5rem;
-    align-items: start;
+  display: grid;
+  /* Auto-fits into 2 columns on mobile, 4 on desktop */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 3rem 1.5rem;
+  align-items: start;
 }
 
 /* Individual Metric Column */
 .metric-minimal-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /* The Orange Line-Art Icon */
 .metric-icon {
-    width: 36px;
-    height: 36px;
-    color: var(--primary-color);
-    /* Automatically makes the SVG orange! */
-    margin-bottom: 1.25rem;
+  width: 36px;
+  height: 36px;
+  color: var(--primary-color);
+  /* Automatically makes the SVG orange! */
+  margin-bottom: 1.25rem;
 }
 
 /* The Big Bold Numbers (e.g. 100+) */
 .metric-value {
-    font-size: 3.5rem;
-    font-weight: 800;
-    /* Extra bold like the image */
-    color: var(--text-color);
-    /* Black/Dark Gray */
-    margin: 0 0 0.5rem 0;
-    line-height: 1;
+  font-size: 3.5rem;
+  font-weight: 800;
+  /* Extra bold like the image */
+  color: var(--text-color);
+  /* Black/Dark Gray */
+  margin: 0 0 0.5rem 0;
+  line-height: 1;
 }
 
 /* For text-based metrics (e.g. "Global") so they don't break the layout */
 .metric-value-text {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--text-color);
-    margin: 0 0 0.5rem 0;
-    line-height: 1;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  line-height: 1;
 }
 
 /* The Uppercase Subtitle (e.g. "PROJECTS DELIVERED") */
 .metric-label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    /* The secret to making it look like your image! */
-    margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  /* The secret to making it look like your image! */
+  margin: 0 0 0.5rem 0;
 }
 
 /* Optional: Your longer descriptions, styled softly so they don't distract */
 .metric-subtext {
-    font-size: 0.9rem;
-    color: #9ca3af;
-    /* A slightly lighter gray */
-    margin: 0;
-    line-height: 1.4;
-    max-width: 200px;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  /* A slightly lighter gray */
+  margin: 0;
+  line-height: 1.4;
+  max-width: 200px;
 }

@@ -10,11 +10,18 @@ import { TeamAbout } from '../../components/team-about/team-about';
 
 @Component({
   selector: 'app-homepage',
-  imports: [SelectedWork, TeamAbout, Faqs, Metrics, ClientLogos, ReviewsHomepage, ServicesHomepage, CtaSection],
+  imports: [
+    SelectedWork,
+    TeamAbout,
+    Faqs,
+    Metrics,
+    ClientLogos,
+    ReviewsHomepage,
+    ServicesHomepage,
+    CtaSection,
+  ],
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',
-  standalone: true
+  standalone: true,
 })
-export class Homepage {
-
-}
+export class Homepage {}

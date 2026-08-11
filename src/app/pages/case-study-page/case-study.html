@@ -1,41 +1,41 @@
-  <section class="hero-case-study">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="project-tag">Featured Case Study</p>
-      <h1 class="hero-title">{{ projectItem.title }}</h1>
-      <p class="hero-description">{{projectItem.subhead}}</p>
-    </div>
-  </section>
+<section class="hero-case-study">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="project-tag">Featured Case Study</p>
+    <h1 class="hero-title">{{ projectItem.title }}</h1>
+    <p class="hero-description">{{ projectItem.subhead }}</p>
+  </div>
+</section>
 
-  <!-- basic info section -->
-  <section class="section case-study-content">
-    <div class="container">
-      <div class="glass-card details-grid">
-        <div class="detail-item">
-          <h3>Period</h3>
-          <p>{{ projectItem.period }}</p>
-        </div>
-        <div class="detail-item">
-          <h3>Services</h3>
-          <p>{{projectItem.services}}</p>
-        </div>
-        <div class="detail-item">
-          <h3>Website</h3>
-          <a href="{{projectItem.website}}">{{projectItem.website}}</a>
-        </div>
+<!-- basic info section -->
+<section class="section case-study-content">
+  <div class="container">
+    <div class="glass-card details-grid">
+      <div class="detail-item">
+        <h3>Period</h3>
+        <p>{{ projectItem.period }}</p>
+      </div>
+      <div class="detail-item">
+        <h3>Services</h3>
+        <p>{{ projectItem.services }}</p>
+      </div>
+      <div class="detail-item">
+        <h3>Website</h3>
+        <a href="{{ projectItem.website }}">{{ projectItem.website }}</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- video section -->
-  <section class="picture-section">
-    <img [src]="projectItem.picture" class="project-image">
-  </section>
+<!-- video section -->
+<section class="picture-section">
+  <img [src]="projectItem.picture" class="project-image" />
+</section>
 
-   <!-- CONTENT -->
-  <section class="section section-gray">
-    <div class="container">
-       <article class="content-block">
+<!-- CONTENT -->
+<section class="section section-gray">
+  <div class="container">
+    <article class="content-block">
       <h2>Context</h2>
       <p>{{ projectItem.context }}</p>
     </article>
@@ -54,59 +54,43 @@
       <h2>Creative Approach</h2>
       <p>{{ projectItem.creativeApproach }}</p>
     </article>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="list-section" *ngIf="selectedWorkItem.deliverables?.length">
+  <h2>Deliverables</h2>
+
+  <ul>
+    <li *ngFor="let item of projectItem.deliverables">
+      {{ item }}
+    </li>
+  </ul>
+</section>
+
+<!-- RESULTS -->
+<section class="list-section" *ngIf="selectedWorkItem.results?.length">
+  <h2>Results / Impact</h2>
+
+  <ul>
+    <li *ngFor="let item of projectItem.results">
+      {{ item }}
+    </li>
+  </ul>
+</section>
+
+<!-- RELATED -->
+<section class="list-section" *ngIf="projectItem.relatedServices?.length">
+  <h2>Related Services</h2>
+
+  <div class="service-grid">
+    <div class="service" *ngFor="let service of projectItem.relatedServices">
+      {{ service }}
     </div>
-   
+  </div>
+</section>
 
-  </section>
-
-  <!-- DELIVERABLES -->
-  <section
-    class="list-section"
-    *ngIf="selectedWorkItem.deliverables?.length"
-  >
-    <h2>Deliverables</h2>
-
-    <ul>
-      <li *ngFor="let item of projectItem.deliverables">
-        {{ item }}
-      </li>
-    </ul>
-  </section>
-
-  <!-- RESULTS -->
-  <section
-    class="list-section"
-    *ngIf="selectedWorkItem.results?.length"
-  >
-    <h2>Results / Impact</h2>
-
-    <ul>
-      <li *ngFor="let item of projectItem.results">
-        {{ item }}
-      </li>
-    </ul>
-  </section>
-
-  <!-- RELATED -->
-  <section
-    class="list-section"
-    *ngIf="projectItem.relatedServices?.length"
-  >
-    <h2>Related Services</h2>
-
-    <div class="service-grid">
-      <div
-        class="service"
-        *ngFor="let service of projectItem.relatedServices"
-      >
-        {{ service }}
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- <div class="case-study-body">
+<!-- <div class="case-study-body">
     <h2>The Challenge</h2>
     <p>
       Ocean science and marine conservation stories are often complex, filled with technical data, and hard for the general public to connect with. The goal of this project was to translate field science and offshore footage into cinematic campaigns that inspire immediate action and make complex science understandable.
@@ -118,6 +102,6 @@
     </p>
   </div> -->
 
-  <div class="back-navigation">
-    <a routerLink="/work" class="btn btn-outline-orange btn-lg">← Back to Our Work</a>
-  </div>
+<div class="back-navigation">
+  <a routerLink="/work" class="btn btn-outline-orange btn-lg">← Back to Our Work</a>
+</div>

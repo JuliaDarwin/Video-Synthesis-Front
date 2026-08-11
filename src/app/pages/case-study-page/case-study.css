@@ -146,7 +146,7 @@
 
 .content-block p {
   line-height: 1.9;
-  opacity: .85;
+  opacity: 0.85;
 }
 
 /* LISTS */
@@ -207,5 +207,4 @@
   .content-block.full {
     grid-column: auto;
   }
-
 }

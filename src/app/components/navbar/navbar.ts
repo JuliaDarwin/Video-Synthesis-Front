@@ -8,40 +8,35 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.css',
 })
 export class Navbar {
-
   isMobileOpen = false;
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router) {}
 
   home() {
-    this.router.navigate(["/"])
+    this.router.navigate(['/']);
   }
 
   work() {
-    this.router.navigate(["/work"])
+    this.router.navigate(['/work']);
   }
 
   services() {
-    this.router.navigate(["/services"])
+    this.router.navigate(['/services']);
   }
 
   team() {
-    this.router.navigate(["/team"])
+    this.router.navigate(['/team']);
   }
 
-  reviews() {
-    this.router.navigate(["/reviews"])
+  contact() {
+    this.router.navigate(['/contact']);
   }
 
   estimate() {
-    this.router.navigate(["/estimate"])
+    this.router.navigate(['/estimate']);
   }
 
   toggleMobileMenu() {
     this.isMobileOpen = !this.isMobileOpen;
   }
-
-
 }

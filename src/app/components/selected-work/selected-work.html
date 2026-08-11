@@ -1,33 +1,35 @@
-@if(!showOnlyFeatured){
+@if (!showOnlyFeatured) {
   <div class="showcase" [class.grid-layout]="!isAnimated">
-  @for (item of filteredWorkItems; track item.title) {
-    @if (!item.isShowCase || forHomepage) {
-      <div class="slide" [class.animated]="isAnimated">
-        <div class="pic-wrapper">
-          <img [src]="item.picture">
-          <div class="pic-overlay">
-            <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study">View Case Study</a>
-          </div>
-        </div>
-        
-        <div class="showcase-item">
-          <div class="project-intro">
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.description }}</p>
-          </div>
-          
-          @if (showCategories) {
-            <div class="showcase-filters">
-              @for (tag of item.tags; track tag) {
-                <button class="filter-badge filter-blue">{{ tag }}</button>
-              }
+    @for (item of filteredWorkItems; track item.title) {
+      @if (!item.isShowCase || forHomepage) {
+        <div class="slide" [class.animated]="isAnimated">
+          <div class="pic-wrapper">
+            <img [src]="item.picture" />
+            <div class="pic-overlay">
+              <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study"
+                >View Case Study</a
+              >
             </div>
-          }
+          </div>
+
+          <div class="showcase-item">
+            <div class="project-intro">
+              <h4>{{ item.title }}</h4>
+              <p>{{ item.description }}</p>
+            </div>
+
+            @if (showCategories) {
+              <div class="showcase-filters">
+                @for (tag of item.tags; track tag) {
+                  <button class="filter-badge filter-blue">{{ tag }}</button>
+                }
+              </div>
+            }
+          </div>
         </div>
-      </div>
+      }
     }
-  }
-</div>
+  </div>
 } @else if (showOnlyFeatured && forHomepage) {
   <div class="featured-homepage" [class.grid-layout]="!isAnimated">
     @if (isAnimated) {
@@ -36,18 +38,20 @@
           @if (item.isShowCase) {
             <div class="slide">
               <div class="pic-wrapper">
-                <img [src]="item.picture" [alt]="item.title">
+                <img [src]="item.picture" [alt]="item.title" />
                 <div class="pic-overlay">
-                  <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study">View Case Study</a>
+                  <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study"
+                    >View Case Study</a
+                  >
                 </div>
               </div>
-              
+
               <div class="showcase-item">
                 <div class="project-intro">
                   <h4>{{ item.title }}</h4>
                   <p>{{ item.description }}</p>
                 </div>
-                
+
                 @if (showCategories) {
                   <div class="showcase-filters">
                     @for (tag of item.tags; track tag) {
@@ -63,18 +67,20 @@
           @if (item.isShowCase) {
             <div class="slide">
               <div class="pic-wrapper">
-                <img [src]="item.picture" [alt]="item.title">
+                <img [src]="item.picture" [alt]="item.title" />
                 <div class="pic-overlay">
-                  <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study">View Case Study</a>
+                  <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study"
+                    >View Case Study</a
+                  >
                 </div>
               </div>
-              
+
               <div class="showcase-item">
                 <div class="project-intro">
                   <h4>{{ item.title }}</h4>
                   <p>{{ item.description }}</p>
                 </div>
-                
+
                 @if (showCategories) {
                   <div class="showcase-filters">
                     @for (tag of item.tags; track tag) {
@@ -92,18 +98,20 @@
         @if (item.isShowCase) {
           <div class="slide">
             <div class="pic-wrapper">
-              <img [src]="item.picture" [alt]="item.title">
+              <img [src]="item.picture" [alt]="item.title" />
               <div class="pic-overlay">
-                <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study">View Case Study</a>
+                <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study"
+                  >View Case Study</a
+                >
               </div>
             </div>
-            
+
             <div class="showcase-item">
               <div class="project-intro">
                 <h4>{{ item.title }}</h4>
                 <p>{{ item.description }}</p>
               </div>
-              
+
               @if (showCategories) {
                 <div class="showcase-filters">
                   @for (tag of item.tags; track tag) {
@@ -117,44 +125,44 @@
       }
     }
   </div>
-} @else if(showOnlyFeatured && !forHomepage) {
-<div class="featured-work-page">
-  @for (item of filteredWorkItems; track item.title) {
-    @if(item.isShowCase){
-      <div class="featured-work">
-        <div class="presentation">
-          @if (showCategories) {
-            <div class="showcase-filters">
-              @for (tag of item.tags; track tag) {
-                <button class="filter-badge filter-blue">{{ tag }}</button>
-              }
-            </div>
-          }
-          <div class="description">
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.description }}</p>
-          </div>
-          <div class="tasks">
-            <p class="subtitle">What we did</p>
-            @for (task of item.tasks; track task) {
-              <div class="task">
-                <p>{{ task }}</p>
+} @else if (showOnlyFeatured && !forHomepage) {
+  <div class="featured-work-page">
+    @for (item of filteredWorkItems; track item.title) {
+      @if (item.isShowCase) {
+        <div class="featured-work">
+          <div class="presentation">
+            @if (showCategories) {
+              <div class="showcase-filters">
+                @for (tag of item.tags; track tag) {
+                  <button class="filter-badge filter-blue">{{ tag }}</button>
+                }
               </div>
             }
+            <div class="description">
+              <h4>{{ item.title }}</h4>
+              <p>{{ item.description }}</p>
+            </div>
+            <div class="tasks">
+              <p class="subtitle">What we did</p>
+              @for (task of item.tasks; track task) {
+                <div class="task">
+                  <p>{{ task }}</p>
+                </div>
+              }
+            </div>
+          </div>
+          <div class="recent-work">
+            <p class="subtitle">Recent work</p>
+            @for (work of item.work; track $index) {
+              <div class="work">
+                <img [src]="work.image" />
+                <p>{{ work.description }}</p>
+              </div>
+            }
+            <button class="btn btn-primary">See more details</button>
           </div>
         </div>
-        <div class="recent-work">
-          <p class="subtitle">Recent work</p>
-          @for (work of item.work; track $index) {
-            <div class="work">
-              <img [src]="work.image">
-              <p>{{ work.description }}</p>
-            </div>
-          }
-          <button class="btn btn-primary">See more details</button>
-        </div>
-      </div>
+      }
     }
-  }
-</div>
+  </div>
 }

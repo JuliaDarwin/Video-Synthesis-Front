@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
 import { CtaSection } from '../../components/cta-section/cta-section';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-services-page',
   imports: [CtaSection],
   templateUrl: './services-page.html',
   styleUrl: './services-page.css',
-  standalone: true
+  standalone: true,
 })
 export class ServicesPage {
+  constructor(private router: Router) {}
 
   services: Array<any> = [
     {
-      id: 1,
+      id: '01',
       category: 'VIDEO SERVICES',
       title: 'Video Editing & Post-Production',
       description:
@@ -26,23 +28,23 @@ export class ServicesPage {
         'Audio Cleanup',
         'Subtitles',
         'Social Media Versions',
-        'Platform-ready Exports'
+        'Platform-ready Exports',
       ],
 
       bestFor: [
-        'Campaign Videos',
-        'Expedition Films',
-        'Sailing Races',
-        'Short Documentaries',
-        'Research Explainers',
-        'Social Media Reels'
+        { name: 'Campaign Videos', icon: 'campaign' },
+        { name: 'Expedition Films', icon: 'explore' },
+        { name: 'Sailing Races', icon: 'sailing' },
+        { name: 'Short Documentaries', icon: 'movie' },
+        { name: 'Research Explainers', icon: 'science' },
+        { name: 'Social Media Reels', icon: 'smartphone' },
       ],
 
-      image: 'malizia.webp'
+      image: 'video-editing.jpg',
     },
 
     {
-      id: 2,
+      id: '02',
       category: 'SCIENCE COMMUNICATION',
       title: 'Science Storytelling & Visual Communication',
       description:
@@ -56,23 +58,23 @@ export class ServicesPage {
         'Data Visualization',
         'Motion Graphics',
         'Presentation Visuals',
-        'Editorial Guidance'
+        'Editorial Guidance',
       ],
 
       bestFor: [
-        'Research Projects',
-        'Scientific Reports',
-        'Conservation Campaigns',
-        'Educational Content',
-        'Policy Communication',
-        'Ocean Science'
+        { name: 'Research Projects', icon: 'science' },
+        { name: 'Scientific Reports', icon: 'description' },
+        { name: 'Conservation Campaigns', icon: 'eco' },
+        { name: 'Educational Content', icon: 'school' },
+        { name: 'Policy Communication', icon: 'policy' },
+        { name: 'Ocean Science', icon: 'water' },
       ],
 
-      image: 'malizia.webp'
+      image: 'video-editing.jpg',
     },
 
     {
-      id: 3,
+      id: '03',
       category: 'COMMUNICATION STRATEGY',
       title: 'Digital Communications & Campaign Strategy',
       description:
@@ -86,19 +88,23 @@ export class ServicesPage {
         'Website Content',
         'Newsletter Assets',
         'Campaign Toolkits',
-        'Platform Adaptation'
+        'Platform Adaptation',
       ],
 
       bestFor: [
-        'NGOs',
-        'Foundations',
-        'Research Institutes',
-        'International Networks',
-        'Long-term Campaigns',
-        'Conservation Projects'
+        { name: 'NGOs', icon: 'volunteer_activism' },
+        { name: 'Foundations', icon: 'account_balance' },
+        { name: 'Research Institutes', icon: 'biotech' },
+        { name: 'International Networks', icon: 'public' },
+        { name: 'Long-term Campaigns', icon: 'campaign' },
+        { name: 'Conservation Projects', icon: 'eco' },
       ],
 
-      image: 'malizia.webp'
-    }
+      image: 'video-editing.jpg',
+    },
   ];
+
+  toContact() {
+    this.router.navigate(['/contact']);
+  }
 }

@@ -1,32 +1,32 @@
-  <nav class="navbar">
-    <div class="container navbar-content">
-      <div class="navbar-logo">
-        <h1>LOGO</h1>
-      </div>
-      <div class="navbar-menu">
-        <li (click)="home()" class="nav-link active">Home</li>
-        <li (click)="work()" class="nav-link">Work</li>
-        <li (click)="services()" class="nav-link">Services</li>
-        <li (click)="team()" class="nav-link">Team</li>
-        <li (click)="reviews()" class="nav-link">Reviews</li>
-        <li (click)="estimate()" class="nav-link">Estimate Project</li>
-      </div>
-      <div class="navbar-cta">
-        <button class="btn btn-primary">Book Free Call</button>
-      </div>
-      <button class="mobile-menu-btn" [class.active]="isMobileOpen" (click)="toggleMobileMenu()">
-        <span class="menu-icon">☰</span>
-        <span class="close-icon">✕</span>
-      </button>
+<nav class="navbar">
+  <div class="container navbar-content">
+    <div class="navbar-logo">
+      <h1>LOGO</h1>
     </div>
-    <div class="mobile-menu" [class.active]="isMobileOpen" id="mobileMenu">
-      <li (click)="home()" class="mobile-nav-link">Home</li>
-      <li (click)="work()" class="mobile-nav-link">Work</li>
-      <li (click)="services()" class="mobile-nav-link">Services</li>
-      <li (click)="team()" class="mobile-nav-link">Team</li>
-      <li (click)="reviews()" class="mobile-nav-link">Reviews</li>
-      <li (click)="estimate()" class="mobile-nav-link">Estimate Project</li>
-      
-      <button class="btn btn-primary btn-full">Book Free Call</button>
+    <div class="navbar-menu">
+      <li (click)="home()" class="nav-link active">Home</li>
+      <li (click)="work()" class="nav-link">Work</li>
+      <li (click)="services()" class="nav-link">Services</li>
+      <li (click)="team()" class="nav-link">Team</li>
+      <li (click)="contact()" class="nav-link">Contact</li>
+      <li (click)="estimate()" class="nav-link">Estimate Project</li>
     </div>
-  </nav>
+    <div class="navbar-cta">
+      <button class="btn btn-primary">Book Free Call</button>
+    </div>
+    <button class="mobile-menu-btn" [class.active]="isMobileOpen" (click)="toggleMobileMenu()">
+      <span class="menu-icon">☰</span>
+      <span class="close-icon">✕</span>
+    </button>
+  </div>
+  <div class="mobile-menu" [class.active]="isMobileOpen" id="mobileMenu">
+    <li (click)="home()" class="mobile-nav-link">Home</li>
+    <li (click)="work()" class="mobile-nav-link">Work</li>
+    <li (click)="services()" class="mobile-nav-link">Services</li>
+    <li (click)="team()" class="mobile-nav-link">Team</li>
+    <li (click)="contact()" class="mobile-nav-link">Contact</li>
+    <li (click)="estimate()" class="mobile-nav-link">Estimate Project</li>
+
+    <button class="btn btn-primary btn-full">Book Free Call</button>
+  </div>
+</nav>

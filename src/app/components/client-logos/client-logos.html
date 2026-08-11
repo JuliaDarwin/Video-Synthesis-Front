@@ -1,19 +1,16 @@
 <div class="clients-slide">
-  <div class="logo-track"> 
+  <div class="logo-track">
     @for (logo of logos; track $index) {
-    <div class="client-item">
-        <img class="client-logo" src="{{ logo.src }}" alt="{{ logo.alt }}">
+      <div class="client-item">
+        <img class="client-logo" src="{{ logo.src }}" alt="{{ logo.alt }}" />
         <span class="client-name">{{ logo.name }}</span>
       </div>
-  }
-  @for (logo of logos; track $index) {
-    <div class="client-item">
-        <img class="client-logo" src="{{ logo.src }}" alt="{{ logo.alt }}">
+    }
+    @for (logo of logos; track $index) {
+      <div class="client-item">
+        <img class="client-logo" src="{{ logo.src }}" alt="{{ logo.alt }}" />
         <span class="client-name">{{ logo.name }}</span>
       </div>
-  }
+    }
   </div>
-    
-  
 </div>
-    

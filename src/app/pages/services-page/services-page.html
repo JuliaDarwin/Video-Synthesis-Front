@@ -1,55 +1,77 @@
 <section id="home" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-intro">
-        <p>Services</p>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-intro">
+      <p>Services</p>
       <h1 class="hero-title">Video, visuals and strategy for ocean-focused stories</h1>
-      <p class="hero-mute">We create content that helps science, conservation and sailing organizations explain ideas, build trust and move audiences across platforms.</p>
-      </div>     
+      <p class="hero-mute">
+        We create content that helps science, conservation and sailing organizations explain ideas,
+        build trust and move audiences across platforms.
+      </p>
     </div>
-  </section>
-  <section>
-    <div class="container">
-      @for (service of services; track $index) {
-        <article>
-          <div class="service-picture">
-            <img [src]="service.image" alt="{{service.title}}">
-          </div>
-          <div class="service-info">
-            <p>Service {{service.id}}</p>
-            <h2>{{ service.title }}</h2>
-            <p class="description">{{ service.description }}</p>
-            <div class="service-included">
-              <h3>Includes</h3>
-              <div class="included-list">
-                <ul>
-                  @for (item of service.includes; track $index) {
-                    <li>{{ item }}</li>
-                  }
-                </ul>
-              </div>
-            </div>
-            <div class="service-best-for">
-              <h3>Best for:</h3>
-              <div class="best-for-list">
-                <ul>
-                @for (item of service.bestFor; track $index) {
-                  <li class="best-for-item">{{ item }}</li>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <h2 class="section-title">SERVICES WE OFFER</h2>
+    @for (service of services; track $index) {
+      <article>
+        <div class="service-picture">
+          <img [src]="service.image" alt="{{ service.title }}" />
+        </div>
+        <div class="service-info">
+          <p class="blue-title">Service {{ service.id }}</p>
+          <h3 class="section-subtitle">{{ service.title }}</h3>
+          <hr />
+          <p class="description">{{ service.description }}</p>
+          <div class="service-included">
+            <h4 class="blue-title">
+              <span class="material-symbols-outlined">playlist_add_check</span>Includes
+            </h4>
+            <div class="included-list">
+              <ul>
+                @for (item of service.includes; track $index) {
+                  <li><span class="material-symbols-outlined">check_circle</span>{{ item }}</li>
                 }
               </ul>
-              </div>
-              
             </div>
           </div>
-          
-        </article>
-        
-      }
+          <div class="service-best-for">
+            <h4 class="blue-title"><span class="material-symbols-outlined">star</span>Best for:</h4>
+            <div class="best-for-list">
+              <ul>
+                @for (item of service.bestFor; track $index) {
+                  <li class="best-for-item">
+                    <span class="material-symbols-outlined">{{ item.icon }}</span
+                    >{{ item.name }}
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+<section>
+  <div class="container cta-services">
+    <div class="cta-services-msg">
+      <span class="material-symbols-outlined">chat</span>
+      <p>Have footage ready or need guidane? Let's bring your story to life.</p>
     </div>
-  </section>
-  <section>
-    <app-cta-section
+    <div>
+      <button class="btn btn-secondary" (click)="(toContact)">
+        Let's talk <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+</section>
+<section>
+  <app-cta-section
     title="Not sure what you need yet?"
     text="Tell us what you're working on and we'll help you find the right format, scope and next step."
-    btn2="Book a Free Call"></app-cta-section>
-  </section>
+    btn2="Book a Free Call"
+    btn1="Start a Project"
+  ></app-cta-section>
+</section>

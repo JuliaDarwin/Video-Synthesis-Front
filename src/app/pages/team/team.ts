@@ -7,6 +7,6 @@ import { TeamAbout } from '../../components/team-about/team-about';
   imports: [CtaSection, TeamAbout],
   templateUrl: './team.html',
   styleUrl: './team.css',
-  standalone: true
+  standalone: true,
 })
-export class Team { }
+export class Team {}

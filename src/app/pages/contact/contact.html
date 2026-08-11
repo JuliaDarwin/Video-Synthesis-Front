@@ -1,0 +1,340 @@
+<section id="home" class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-intro">
+      <p>Video Synthesis</p>
+      <h1 class="hero-title">Start A Project</h1>
+      <p class="hero-mute">
+        Share your goals, materials and timeline. We'll help you shape the right format, scope and
+        next steps.
+      </p>
+    </div>
+    <div class="hero-buttons">
+      <a href="#work" class="btn btn-primary btn-lg">See our work</a>
+      <a href="#contact" class="btn btn-outline btn-lg">Book Free Call</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-white contact-section">
+  <div class="container-small">
+    <div class="contact-form-container" id="contact">
+      @if (!isSubmitted) {
+        <h2 class="section-subtitle">Contact Form</h2>
+        <p class="section-description">Complete the steps below to outline your project requirements.</p>
+
+        <div class="form-steps">
+          <div class="step" [class.active]="currentStep === 1" [class.completed]="currentStep > 1">1</div>
+          <hr [class.active]="currentStep > 1">
+          <div class="step" [class.active]="currentStep === 2" [class.completed]="currentStep > 2">2</div>
+          <hr [class.active]="currentStep > 2">
+          <div class="step" [class.active]="currentStep === 3" [class.completed]="currentStep > 3">3</div>
+          <hr [class.active]="currentStep > 3">
+          <div class="step" [class.active]="currentStep === 4" [class.completed]="currentStep > 4">4</div>
+        </div>
+
+        <form (submit)="onSubmit($event)" [formGroup]="contactForm">
+          <h3 class="step-heading">{{stepTitles[currentStep - 1]}}</h3>
+
+          <!-- Step 1: About You and Your Project -->
+          @if (currentStep === 1) {
+            <div formGroupName="aboutYou">
+              <fieldset>
+                <legend class="section-title">About You</legend>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input id="name" type="text" placeholder="Your name" formControlName="name"/>
+                </div>
+
+                <div class="form-group">
+                  <label for="organization">Organization</label>
+                  <input id="organization" type="text" placeholder="Company or organization" formControlName="organization" />
+                </div>
+
+                <div class="form-group">
+                  <label for="role">Role</label>
+                  <input id="role" type="text" placeholder="Your role / title" formControlName="role" />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input id="email" type="email" placeholder="you@example.com" formControlName="email" />
+                </div>
+
+                <div class="form-group">
+                  <label for="website">Website</label>
+                  <input id="website" type="url" placeholder="https://example.com" formControlName="website" />
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-method">Preferred contact method</label>
+                  <select id="contact-method" formControlName="contactMethod">
+                    <option value="">Select one</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="video-call">Video call</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend class="section-title">About Your Project</legend>
+              <div class="form-group">
+                <label for="project-title">Project title</label>
+                <input id="project-title" type="text" placeholder="A title for your project" formControlName="projectTitle" />
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="description">Short description</label>
+                  <textarea id="description" placeholder="Describe the project..." formControlName="description"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="goal">Main goal</label>
+                  <textarea id="goal" placeholder="What is the main objective?" formControlName="goal"></textarea>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="audience">Target audience</label>
+                  <input id="audience" type="text" placeholder="Who is this video for?" formControlName="audience" />
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Key message</label>
+                  <textarea id="message" placeholder="What is the key message?" formControlName="message"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Desired platforms</label>
+                <div class="options-grid">
+                  <label class="option-card">
+                    <input type="checkbox" name="platform" value="website" />
+                    <span>Website</span>
+                  </label>
+
+                  <label class="option-card">
+                    <input type="checkbox" name="platform" value="instagram" />
+                    <span>Instagram</span>
+                  </label>
+
+                  <label class="option-card">
+                    <input type="checkbox" name="platform" value="youtube" />
+                    <span>YouTube</span>
+                  </label>
+
+                  <label class="option-card">
+                    <input type="checkbox" name="platform" value="linkedin" />
+                    <span>LinkedIn</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-buttons">
+                <button type="button" class="btn btn-primary" (click)="nextStep()">Next Step</button>
+              </div>
+            </fieldset>
+            </div>
+          }
+
+          <!-- Step 2: Requirements -->
+          @if (currentStep === 2) {
+            <fieldset>
+              <legend class="section-title">Deliverables Needed</legend>
+              <div class="options-grid">
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="main-video" />
+                  <span>Main video</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="social-media-cutdowns" />
+                  <span>Social media cutdowns</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="vertical-reels" />
+                  <span>Vertical reels</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="motion-graphics" />
+                  <span>Motion graphics</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="infographics" />
+                  <span>Infographics</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="subtitles" />
+                  <span>Subtitles</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="translations" />
+                  <span>Translations</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="campaign-visuals" />
+                  <span>Campaign visuals</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="website-assets" />
+                  <span>Website assets</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="deliverable" value="not-sure" />
+                  <span>Not sure yet</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend class="section-title">Materials Available</legend>
+              <div class="options-grid">
+                <label class="option-card">
+                  <input type="checkbox" name="materials" value="raw-footage" />
+                  <span>Raw footage</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="materials" value="interviews" />
+                  <span>Interviews</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="materials" value="photos" />
+                  <span>Photos</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="materials" value="script" />
+                  <span>Script</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="materials" value="brand-guidelines" />
+                  <span>Brand guidelines</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="materials" value="previous-content" />
+                  <span>Previous content</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="materials" value="references" />
+                  <span>References</span>
+                </label>
+
+                <label class="option-card">
+                  <input type="checkbox" name="materials" value="data-reports" />
+                  <span>Data / reports</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form-buttons">
+              <button type="button" class="btn btn-outline" (click)="previousStep()">Previous Step</button>
+              <button type="button" class="btn btn-primary" (click)="nextStep()">Next Step</button>
+            </div>
+          }
+
+          <!-- Step 3: Time and Budget -->
+          @if (currentStep === 3) {
+            <div formGroupName="timeBudget">
+              <fieldset>
+                <legend class="section-title">Timeline</legend>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="start-date">Start date</label>
+                  <input type="date" id="start-date"/>
+                </div>
+                <div class="form-group">
+                  <label for="deliverable-date">Desired deliverable date</label>
+                  <input type="date" id="deliverable-date"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Is your deadline flexible?</label>
+                <div class="options-grid">
+                  <label class="option-card">
+                    <input type="checkbox" name="yes" value="yes" />
+                    <span>Yes</span>
+                  </label>
+                  <label class="option-card">
+                    <input type="checkbox" name="no" value="no" />
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend class="section-title">Budget</legend>
+              <div class="form-group">
+                <label for="budget">What is your budget?</label>
+                <select id="budget" formControlName="budget">
+                  <option value="">Select one</option>
+                  <option value="under-500">Under €500</option>
+                  <option value="500-1500">€500 - €1,500</option>
+                  <option value="1500-3000">€1,500 - €3,000</option>
+                  <option value="3000-5000">€3,000 - €5,000</option>
+                  <option value="5000+">€5,000+</option>
+                  <option value="not-sure">Not sure yet</option>
+                </select>
+              </div>
+            </fieldset>
+
+            <div class="form-buttons">
+              <button type="button" class="btn btn-outline" (click)="previousStep()">Previous Step</button>
+              <button type="button" class="btn btn-primary" (click)="nextStep()">Next Step</button>
+            </div>
+            </div>
+          }
+
+          <!-- Step 4: Additional Details -->
+          @if (currentStep === 4) {
+            <div formGroupName="additionalDetails">
+              <fieldset>
+                <legend class="section-title">Additional Details</legend>
+              <div class="form-group">
+                <label for="additional-details">Tell us any other important details</label>
+                <textarea id="additional-details" placeholder="Please provide any other context or references..." formControlName="additionalDetails"></textarea>
+              </div>
+            </fieldset>
+
+            <div class="form-buttons">
+              <button type="button" class="btn btn-outline" (click)="previousStep()">Previous Step</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </div>
+          }
+        </form>
+      } @else {
+        <div class="thank-you-container" style="text-align: center; padding: 3rem 0;">
+          <h2 class="section-subtitle">Thank You!</h2>
+          <p class="section-description" style="margin-bottom: 0;">
+            We have received your project details. Thanks for reaching out. We'll review your project and get back to you with next steps.
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+<app-cta-section
+title="Prefer to talk it through?"
+  text="Book a free 15-minute call and we'll help you clarify the project together."
+  btn1="Book a Call"
+  ></app-cta-section>

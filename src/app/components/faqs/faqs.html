@@ -1,13 +1,19 @@
- <div class="accordion">
-        @for (faq of faqs; track $index) {
-          <div class="accordion-item" [class.active]="openIndex === $index" [style.border]="openIndex === $index ? '1px solid var(--primary-soft)' : '1px solid #e5e7eb'">
-            <button class="accordion-trigger" (click)="toggleAccordion($index)">
-              <span [style.color] = "openIndex === $index ? 'var(--primary-color)' : 'var(--text-color)'">{{ faq.question }}</span>
-              <span class="accordion-icon">{{ openIndex === $index ? '−' : '+' }}</span>
-            </button>
-            <div class="accordion-content" [style.maxHeight]="openIndex === $index ? '250px' : '0px'">
-              <p>{{ faq.answer }}</p>
-            </div>
-          </div>
-        }
+<div class="accordion">
+  @for (faq of faqs; track $index) {
+    <div
+      class="accordion-item"
+      [class.active]="openIndex === $index"
+      [style.border]="openIndex === $index ? '1px solid var(--primary-soft)' : '1px solid #e5e7eb'"
+    >
+      <button class="accordion-trigger" (click)="toggleAccordion($index)">
+        <span [style.color]="openIndex === $index ? 'var(--primary-color)' : 'var(--text-color)'">{{
+          faq.question
+        }}</span>
+        <span class="accordion-icon">{{ openIndex === $index ? '−' : '+' }}</span>
+      </button>
+      <div class="accordion-content" [style.maxHeight]="openIndex === $index ? '250px' : '0px'">
+        <p>{{ faq.answer }}</p>
       </div>
+    </div>
+  }
+</div>

@@ -7,4 +7,4 @@ import { SelectedWork } from '../../components/selected-work/selected-work';
   templateUrl: './work.html',
   styleUrl: './work.css',
 })
-export class Work { }
+export class Work {}

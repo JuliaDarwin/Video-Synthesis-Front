@@ -9,4 +9,4 @@ import { Footer } from '../../components/footer/footer';
   templateUrl: './public-layout.html',
   styleUrl: './public-layout.css',
 })
-export class PublicLayout { }
+export class PublicLayout {}

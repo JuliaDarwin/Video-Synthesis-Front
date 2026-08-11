@@ -1,100 +1,210 @@
 .hero {
-    position: relative;
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: black;
-    background-size: cover;
-    background-position: center;
+  position: relative;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: black;
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    color: #fff;
-    max-width: 896px;
-    padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: #fff;
+  max-width: 896px;
+  padding: 0 1rem;
 }
 
 .hero-intro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-title {
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
 }
 
 .hero-mute {
-    color: #91959c;
-    margin-bottom: 10px;
-    max-width: 60%;
+  color: #91959c;
+  margin-bottom: 10px;
+  max-width: 60%;
 }
 
 .hero-description {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    max-width: 768px;
-    margin-left: auto;
-    margin-right: auto;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  text-align: center;
+  margin: 3rem 0;
 }
 
 /* SECCIO SERVEIS */
 
 article {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding-bottom: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 3rem 0;
+}
+
+/* Alternating layout: Swap order of image and text on even cards */
+article:nth-child(even) .service-picture {
+  order: 2;
+}
+
+article:nth-child(even) .service-info {
+  order: 1;
 }
 
 .service-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
 }
 
 .service-picture {
-    width: 100%;
+  width: 100%;
 }
 
 .service-picture img {
-    width: 100%;
-    height: 100%;
-
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
+.blue-title {
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
+hr {
+  width: 10%;
+  border: 2px solid var(--secondary-color);
+  border-radius: 1px;
+}
+
+li {
+  color: var(--text-color);
+}
+
+p {
+  color: var(--text-muted);
+}
 
 .included-list ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.included-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .best-for-list ul {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.best-for-list ul li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  padding-right: 2px;
+  color: var(--secondary-color);
+}
+
+.included-list li .material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.best-for-item .material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 100,
+    'GRAD' 0,
+    'opsz' 24;
+  font-size: 35px;
 }
 
 .best-for-item {
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    list-style: none;
-    text-align: center;
+  padding: 0.5rem;
+  list-style: none;
+  text-align: center;
+}
+
+.cta-services {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem;
+  margin: 2rem auto;
+  font-size: 1.2rem;
+  background-color: var(--background-card);
+  border-color: var(--border-color);
+  border-radius: 16px;
+}
+
+.cta-services-msg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cta-services-msg p {
+  color: var(--text-color);
+}
+
+.cta-services-msg .material-symbols-outlined {
+  color: var(--text-color);
+  font-size: 3rem;
+}
+
+.cta-services button {
+  font-size: 1.2rem;
 }
