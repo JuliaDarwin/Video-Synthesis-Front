@@ -1,18 +1,18 @@
 <nav class="navbar">
   <div class="container navbar-content">
     <div class="navbar-logo">
-      <h1>LOGO</h1>
+      <h1>VIDEOSYNTHESIS</h1>
     </div>
     <div class="navbar-menu">
-      <li (click)="home()" class="nav-link active">Home</li>
-      <li (click)="work()" class="nav-link">Work</li>
-      <li (click)="services()" class="nav-link">Services</li>
-      <li (click)="team()" class="nav-link">Team</li>
-      <li (click)="contact()" class="nav-link">Contact</li>
-      <li (click)="estimate()" class="nav-link">Estimate Project</li>
+      <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link bold">Home</li>
+      <li routerLink="/work" routerLinkActive="active" class="nav-link">Work</li>
+      <li routerLink="/services" routerLinkActive="active" class="nav-link">Services</li>
+      <li routerLink="/team" routerLinkActive="active" class="nav-link">Team</li>
+      <li routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</li>
+      <li routerLink="/estimate" routerLinkActive="active" class="nav-link">Estimate Project</li>
     </div>
     <div class="navbar-cta">
-      <button class="btn btn-primary">Book Free Call</button>
+      <button class="btn btn-primary" (click)="toBookCall()">Book Free Call</button>
     </div>
     <button class="mobile-menu-btn" [class.active]="isMobileOpen" (click)="toggleMobileMenu()">
       <span class="menu-icon">☰</span>
@@ -20,13 +20,13 @@
     </button>
   </div>
   <div class="mobile-menu" [class.active]="isMobileOpen" id="mobileMenu">
-    <li (click)="home()" class="mobile-nav-link">Home</li>
-    <li (click)="work()" class="mobile-nav-link">Work</li>
-    <li (click)="services()" class="mobile-nav-link">Services</li>
-    <li (click)="team()" class="mobile-nav-link">Team</li>
-    <li (click)="contact()" class="mobile-nav-link">Contact</li>
-    <li (click)="estimate()" class="mobile-nav-link">Estimate Project</li>
-
-    <button class="btn btn-primary btn-full">Book Free Call</button>
+    <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="isMobileOpen = false" class="mobile-nav-link">Home</li>
+    <li routerLink="/work" routerLinkActive="active" (click)="isMobileOpen = false" class="mobile-nav-link">Work</li>
+    <li routerLink="/services" routerLinkActive="active" (click)="isMobileOpen = false" class="mobile-nav-link">Services</li>
+    <li routerLink="/team" routerLinkActive="active" (click)="isMobileOpen = false" class="mobile-nav-link">Team</li>
+    <li routerLink="/contact" routerLinkActive="active" (click)="isMobileOpen = false" class="mobile-nav-link">Contact</li>
+    <li routerLink="/estimate" routerLinkActive="active" (click)="isMobileOpen = false" class="mobile-nav-link">Estimate Project</li>
+ 
+    <button class="btn btn-primary btn-full" (click)="toBookCall()">Book Free Call</button>
   </div>
 </nav>

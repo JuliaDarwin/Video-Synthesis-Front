@@ -126,10 +126,19 @@ body {
   /* text-transform: uppercase; */
   text-align: left;
   line-height: 1.1;
+  padding-bottom: 1rem;
 }
 
 .blue {
   color: var(--secondary-color);
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .section-title-long {

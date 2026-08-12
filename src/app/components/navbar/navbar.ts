@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
 export class Navbar {
   isMobileOpen = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   home() {
     this.router.navigate(['/']);
@@ -38,5 +39,10 @@ export class Navbar {
 
   toggleMobileMenu() {
     this.isMobileOpen = !this.isMobileOpen;
+  }
+
+  toBookCall() {
+    this.isMobileOpen = false;
+    this.router.navigate(['/book-a-call']);
   }
 }

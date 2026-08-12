@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CtaSection } from '../../components/cta-section/cta-section';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Hero } from '../../components/hero/hero';
 
 @Component({
   selector: 'app-contact',
-  imports: [CtaSection, ReactiveFormsModule],
+  imports: [CtaSection, ReactiveFormsModule, Hero],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
   standalone: true

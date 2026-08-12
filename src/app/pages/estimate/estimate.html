@@ -1,1 +1,84 @@
-<p>estimate works!</p>
+<app-hero
+title="Project estimator"
+description="Not sure what your project might involve? Answer a few quick questions and we’ll help you understand the likely scope, timeline and budget range."
+btn2="See Our Work"></app-hero>
+
+<section>
+    <div class="container">
+        <header>
+            <p class="section-title">Start your Project</p>
+            <h2 class="section-subtitle">Choose how to start</h2>
+            <p>No commitment: get an indicative quote, tell us about your project, or book a 15-minute call.</p> 
+        </header>
+        
+        <div class="calculator">
+            <div class="calculator-title">
+                <h3>Estimated Budget</h3>
+                <p>This is not a final quote. It helps us understand your needs so we can prepare a tailored proposal.</p>
+            </div>
+            <div class="calculator-data">
+                <div class="calculator-fields">
+                    <div class="field">
+                        <h4>What service do you need?</h4>
+                        <div class="buttons">
+                            @for(service of services; track service){
+                                <button class="calculator-btn filter-blue" [class.selected]="selectedService?.name === service.name"
+                                (click)="selectService(service)">{{service.name}}</button>
+                            }
+                        </div>
+                        
+                    </div>
+                    <div class="field">
+                        <h4>What do you need?</h4>
+                        <div class="buttons">
+                            @for(need of selectedService?.needs; track need){
+                                <button class="calculator-btn filter-blue" [class.selected]="selectedService?.selectedNeed?.name === need.name"
+                                (click)="selectNeed(need)">{{need.name}}</button>
+                            }
+                                
+                        </div>
+                        
+                    </div>
+                    <div class="field">
+                        <h4>How many {{selectedService?.amount}}?</h4>
+                        <div class="slider-container">
+                            <input
+                                type="range"
+                                min="1"
+                                max="12"
+                                value="0"
+                                step="1"
+                                [(ngModel)]="value"
+                            > <span class="slider-value">{{ value }}</span>
+                        </div>
+                    </div>
+                    <div class="extras">
+                        <h4>Extras</h4>
+                        <div class="extras">
+                            @for(extra of selectedService?.extras; track extra){
+                                <label for="{{extra.name}}">
+                                    <input type="checkbox" id="{{extra.name}}" [checked]="selectedExtras.has(extra)" (change)="toggleExtra(extra, $event)">
+                                    {{extra.name}}
+                                </label>
+                            }
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="calculator-result">
+                    <h4>Estimated price</h4>
+                    <div class="result">
+                        <p class="price">{{ calculatedTotal | currency:'EUR':'symbol':'1.0-0' }}</p>
+                        <p>days of work</p>
+                    </div>
+                    <p>Incluye hasta 3 rondas de revisión por entregable, licencias de Adobe CC / Artlist / Envato y seis meses de soporte post-entrega.</p>
+                    <p>Precios sin IVA (21% para clientes españoles; inversión del sujeto pasivo para clientes UE con VAT válido; sin IVA fuera de la UE). Viajes y costes especiales de producción se presupuestan aparte.</p>
+                    <div class="result-cta">
+                        <button class="btn btn-white" (click)="goToContact()">Ask for specific Budget</button>
+                        <p>Estimación orientativa — los presupuestos finales siempre se definen por proyecto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

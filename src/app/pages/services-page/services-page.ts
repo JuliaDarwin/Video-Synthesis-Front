@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { CtaSection } from '../../components/cta-section/cta-section';
 import { Router } from '@angular/router';
+import { Hero } from '../../components/hero/hero';
 
 @Component({
   selector: 'app-services-page',
-  imports: [CtaSection],
+  imports: [CtaSection, Hero],
   templateUrl: './services-page.html',
   styleUrl: './services-page.css',
   standalone: true,
 })
 export class ServicesPage {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   services: Array<any> = [
     {
