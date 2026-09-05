@@ -1,15 +1,19 @@
-<app-hero
+<!-- <app-hero
 title="Start a Project"
 description="Share your goals, materials and timeline. We'll help you shape the right format, scope and next steps."
-btn2="See Our Work"></app-hero>
+btn2="See Our Work"></app-hero> -->
 
 
 <section class="section-white contact-section">
   <div class="container-small">
+    <header>
+      <p class="section-title">Contact form</p>
+      <h2 class="section-subtitle">Start your Project</h2>
+      <p class="section-description">Complete the steps below to outline your project requirements.</p>
+    </header>
     <div class="contact-form-container" id="contact">
       @if (!isSubmitted) {
-        <h2 class="section-subtitle">Contact Form</h2>
-        <p class="section-description">Complete the steps below to outline your project requirements.</p>
+        
 
         <div class="form-steps">
           <div class="step" [class.active]="currentStep === 1" [class.completed]="currentStep > 1">1</div>
@@ -98,26 +102,26 @@ btn2="See Our Work"></app-hero>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" formGroupName="platforms">
                 <label>Desired platforms</label>
                 <div class="options-grid">
                   <label class="option-card">
-                    <input type="checkbox" name="platform" value="website" />
+                    <input type="checkbox" formControlName="website" />
                     <span>Website</span>
                   </label>
 
                   <label class="option-card">
-                    <input type="checkbox" name="platform" value="instagram" />
+                    <input type="checkbox" formControlName="instagram" />
                     <span>Instagram</span>
                   </label>
 
                   <label class="option-card">
-                    <input type="checkbox" name="platform" value="youtube" />
+                    <input type="checkbox" formControlName="youtube" />
                     <span>YouTube</span>
                   </label>
 
                   <label class="option-card">
-                    <input type="checkbox" name="platform" value="linkedin" />
+                    <input type="checkbox" formControlName="linkedin" />
                     <span>LinkedIn</span>
                   </label>
                 </div>
@@ -132,105 +136,107 @@ btn2="See Our Work"></app-hero>
 
           <!-- Step 2: Requirements -->
           @if (currentStep === 2) {
-            <fieldset>
+            <div formGroupName="requirements">
+            <fieldset formGroupName="deliverables">
               <legend class="section-title">Deliverables Needed</legend>
               <div class="options-grid">
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="main-video" />
+                  <input type="checkbox" formControlName="mainVideo" />
                   <span>Main video</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="social-media-cutdowns" />
+                  <input type="checkbox" formControlName="socialMediaCutdowns" />
                   <span>Social media cutdowns</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="vertical-reels" />
+                  <input type="checkbox" formControlName="verticalReels" />
                   <span>Vertical reels</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="motion-graphics" />
+                  <input type="checkbox" formControlName="motionGraphics" />
                   <span>Motion graphics</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="infographics" />
+                  <input type="checkbox" formControlName="infographics" />
                   <span>Infographics</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="subtitles" />
+                  <input type="checkbox" formControlName="subtitles" />
                   <span>Subtitles</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="translations" />
+                  <input type="checkbox" formControlName="translations" />
                   <span>Translations</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="campaign-visuals" />
+                  <input type="checkbox" formControlName="campaignVisuals" />
                   <span>Campaign visuals</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="website-assets" />
+                  <input type="checkbox" formControlName="websiteAssets" />
                   <span>Website assets</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="deliverable" value="not-sure" />
+                  <input type="checkbox" formControlName="notSure" />
                   <span>Not sure yet</span>
                 </label>
               </div>
             </fieldset>
 
-            <fieldset>
+            <fieldset formGroupName="materials">
               <legend class="section-title">Materials Available</legend>
               <div class="options-grid">
                 <label class="option-card">
-                  <input type="checkbox" name="materials" value="raw-footage" />
+                  <input type="checkbox" formControlName="rawFootage" />
                   <span>Raw footage</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="materials" value="interviews" />
+                  <input type="checkbox" formControlName="interviews" />
                   <span>Interviews</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="materials" value="photos" />
+                  <input type="checkbox" formControlName="photos" />
                   <span>Photos</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="materials" value="script" />
+                  <input type="checkbox" formControlName="script" />
                   <span>Script</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="materials" value="brand-guidelines" />
+                  <input type="checkbox" formControlName="brandGuidelines" />
                   <span>Brand guidelines</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="materials" value="previous-content" />
+                  <input type="checkbox" formControlName="previousContent" />
                   <span>Previous content</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="materials" value="references" />
+                  <input type="checkbox" formControlName="references" />
                   <span>References</span>
                 </label>
 
                 <label class="option-card">
-                  <input type="checkbox" name="materials" value="data-reports" />
+                  <input type="checkbox" formControlName="dataReports" />
                   <span>Data / reports</span>
                 </label>
               </div>
             </fieldset>
+            </div>
 
             <div class="form-buttons">
               <button type="button" class="btn btn-outline" (click)="previousStep()">Previous Step</button>
@@ -246,11 +252,11 @@ btn2="See Our Work"></app-hero>
               <div class="form-grid">
                 <div class="form-group">
                   <label for="start-date">Start date</label>
-                  <input type="date" id="start-date"/>
+                  <input type="date" id="start-date" formControlName="startDate" />
                 </div>
                 <div class="form-group">
                   <label for="deliverable-date">Desired deliverable date</label>
-                  <input type="date" id="deliverable-date"/>
+                  <input type="date" id="deliverable-date" formControlName="deliverableDate" />
                 </div>
               </div>
 
@@ -258,11 +264,11 @@ btn2="See Our Work"></app-hero>
                 <label>Is your deadline flexible?</label>
                 <div class="options-grid">
                   <label class="option-card">
-                    <input type="checkbox" name="yes" value="yes" />
+                    <input type="radio" formControlName="deadlineFlexible" value="yes" />
                     <span>Yes</span>
                   </label>
                   <label class="option-card">
-                    <input type="checkbox" name="no" value="no" />
+                    <input type="radio" formControlName="deadlineFlexible" value="no" />
                     <span>No</span>
                   </label>
                 </div>

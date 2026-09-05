@@ -1,10 +1,23 @@
+.estimate-section {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    width: 100%;
+}
+
+@media (min-width:425px) {
+    .estimate-section {
+        width: 90%;
+    }
+}
+
 header {
-    padding: 3rem 0;
+    padding: 1rem 0 2rem;
 }
 
 .calculator {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     gap: 2rem;
     padding: 3rem 1rem;
     border: 1px solid var(--border-color);
@@ -31,8 +44,16 @@ h4 {
 
 .calculator-data {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+    .calculator-data {
+        grid-template-columns: 2fr 1fr;
+        gap: 0;
+    }
 }
 
 .calculator-fields {
@@ -55,9 +76,10 @@ h4 {
     background-color: var(--secondary-soft);
 }
 
-.calculator-result>p {
+.calculator-result p:not(.price) {
     color: var(--text-muted);
     text-align: justify;
+    font-size: 0.8rem;
 }
 
 .buttons {
@@ -143,7 +165,7 @@ input[type="checkbox"] {
 
 .price {
     font-size: 3rem;
-    color: var(--primary-color)
+    color: var(--primary-color);
 }
 
 .result-cta {
@@ -155,10 +177,20 @@ input[type="checkbox"] {
 }
 
 .result-cta button {
-    width: 70%;
+    width: 100%;
+}
+
+@media (min-width: 1094px) {
+    .result-cta button {
+        width: 70%;
+    }
 }
 
 
 .result-cta p {
     color: var(--text-muted)
+}
+
+.btn-estimate {
+    width: 100%;
 }

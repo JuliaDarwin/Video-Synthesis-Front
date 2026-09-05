@@ -59,7 +59,7 @@
 
 /* Contact form section & container */
 .contact-section {
-  padding: 4rem 0 6rem;
+  padding: 2rem 0 4rem;
   background: var(--background-white);
 }
 
@@ -69,7 +69,7 @@
   border-radius: 16px;
   padding: 3.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   position: relative;
   z-index: 20;
 }
@@ -81,8 +81,12 @@
   }
 }
 
+header {
+  padding: 1rem 0 0.5rem;
+}
+
 .section-subtitle {
-  text-align: center;
+  text-align: left;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -90,10 +94,10 @@
 }
 
 .section-description {
-  text-align: center;
+  text-align: left;
   color: var(--text-muted);
   font-size: 1.1rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Steps progress bar styling */
@@ -318,18 +322,30 @@ textarea {
 /* Form Action Buttons */
 .form-buttons {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column-reverse;
   gap: 1.25rem;
   margin-top: 3.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border-color);
 }
 
-/* Shift spacing when there is a back button */
-.form-buttons:has(.btn-outline) {
-  justify-content: space-between;
+.form-buttons button {
+  width: 100%;
 }
 
-.form-buttons button {
-  min-width: 140px;
+@media (min-width: 600px) {
+  .form-buttons {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  /* Shift spacing when there is a back button */
+  .form-buttons:has(.btn-outline) {
+    justify-content: space-between;
+  }
+
+  .form-buttons button {
+    min-width: 140px;
+    width: auto;
+  }
 }

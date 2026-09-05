@@ -12,9 +12,15 @@
 .metrics-minimal-grid {
   display: grid;
   /* Auto-fits into 2 columns on mobile, 4 on desktop */
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
   gap: 3rem 1.5rem;
   align-items: start;
+}
+
+@media(min-width:1118px) {
+  .metrics-minimal-grid {
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+  }
 }
 
 /* Individual Metric Column */

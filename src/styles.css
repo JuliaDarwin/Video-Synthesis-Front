@@ -11,48 +11,18 @@ html {
   font-size: 16px;
 }
 
-/* :root {
-    --background-white: #fff;
-    --background-gray: #f9fafb;
-    --primary-color: #ff6b35;
-    --primary-soft: #f8a283;
-    --primary-hover: #e55a2b;
-    --secondary-color: #4a90e2;
-    --secondary-soft: #85aedd;
-    --text-color: #333333;
-    --text-muted: #91959c;
-    only use with dark backgrounds
-    --border-color: #e5e7eb;
-} */
-
 :root {
-  /* Backgrounds: Deep grays to reduce eye strain */
   --background-white: #121212;
-  /* Replaces white with a standard dark surface */
   --background-gray: #1e1e24;
-  /* Replaces light gray with a slightly lighter dark-gray for cards/sections */
   --background-card: #272a33;
-  /* Primary (Orange): Kept vibrant, tweaked for dark mode */
   --primary-color: #ff6b35;
-  /* Your original brand color works great on dark backgrounds */
   --primary-soft: #4a2517;
-  /* Darkened heavily. Use this if 'soft' is for badge/button backgrounds */
   --primary-hover: #ff8758;
-  /* In dark mode, hover states often look better slightly LIGHTER rather than darker */
-
-  /* Secondary (Blue): Lightened slightly for better contrast against dark grays */
   --secondary-color: #5ea0ec;
   --secondary-soft: #1d324b;
-  /* Dark, subtle blue for background highlights */
-
-  /* Text: Inverted to off-whites and soft grays */
   --text-color: #e4e6eb;
-  /* Off-white (avoids the fuzzy "halation" effect of pure white text) */
   --text-muted: #9aa0a6;
-
-  /* Borders */
   --border-color: #333840;
-  /* Subtle dark border that separates elements cleanly */
 }
 
 body {
@@ -74,14 +44,24 @@ body {
 
 /* sections */
 .section {
-  padding: 5rem 0;
+  padding: 3rem 1.5rem;
 }
 
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 3rem 3rem;
+  }
+
+  .container {
+    padding: 0 3rem;
+  }
 }
 
 .container-small {
@@ -101,7 +81,11 @@ body {
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+}
+
+.section-header p {
+  text-align: left;
 }
 
 .section-subheader {
@@ -121,12 +105,18 @@ body {
 
 /* subtitol barreja blau i negre */
 .section-subtitle {
-  font-size: 3rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 500;
   /* text-transform: uppercase; */
   text-align: left;
-  line-height: 1.1;
+  /* line-height: 1.1; */
   padding-bottom: 1rem;
+}
+
+@media(min-width: 768px) {
+  .section-subtitle {
+    font-size: 2rem;
+  }
 }
 
 .blue {
@@ -184,6 +174,10 @@ body {
   background: var(--primary-hover);
 }
 
+.btn-secondary {
+  background-color: var(--secondary-color);
+}
+
 /* button transparent with white or orange outline */
 .btn-outline {
   background: transparent;
@@ -226,4 +220,40 @@ body {
 .btn-full {
   width: 100%;
   margin-top: 1rem;
+}
+
+/* Smooth Page Downward Float Animation on Load */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+    /* Starts higher and floats DOWNWARDS into place */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Target Angular page components loaded by router-outlet */
+router-outlet+*,
+router-outlet~* {
+  display: block;
+  /* CRITICAL: Custom Angular tags are inline by default; display:block enables CSS transform */
+  animation: pageFadeIn 1s ease-out;
+}
+
+/* Scroll-triggered reveal animation */
+section,
+.section {
+  opacity: 0;
+  transform: translateY(-25px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.revealed,
+.section.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }

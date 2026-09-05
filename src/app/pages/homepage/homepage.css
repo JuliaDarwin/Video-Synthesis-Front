@@ -13,9 +13,21 @@ img {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: black;
   background-size: cover;
   background-position: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/sea-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 1;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
 }
 
 .hero-overlay {
@@ -74,8 +86,9 @@ img {
 /* why us section */
 .why-us {
   display: flex;
+  flex-direction: column;
   gap: 2rem;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .muted {
@@ -125,8 +138,9 @@ img {
 }
 
 .about-image {
-  width: 320px;
-  height: 320px;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
   border-radius: 1rem;
   overflow: hidden;
 }
@@ -220,19 +234,21 @@ img {
   text-align: center;
 }
 
+
 /* process */
 
 .cards-process {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  gap: 1.5rem;
+  gap: 4rem;
+  padding-bottom: 2rem;
 }
 
 .card-process {
   width: 100%;
   max-width: 280px;
-  aspect-ratio: 1;
+  min-height: 320px; /* Guarantees enough height for the text */
   perspective: 1000px;
   text-align: center;
 }
@@ -256,7 +272,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2.25rem 1.75rem;
+  padding: 1.5rem; /* Reduced padding to give text more breathing room */
   background-color: var(--background-card);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--border-color);
@@ -273,8 +289,8 @@ img {
 }
 
 .card-back p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: clamp(0.85rem, 3vw, 0.95rem); /* Scales text slightly on smaller screens */
+  line-height: 1.5;
   color: var(--text-color);
   margin: 0;
 }
@@ -320,26 +336,12 @@ img {
   }
 
   .section-subtitle {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
 @media (min-width: 768px) {
-  .navbar-menu {
-    display: flex;
-  }
 
-  .navbar-cta {
-    display: block;
-  }
-
-  .mobile-menu-btn {
-    display: none;
-  }
-
-  .mobile-menu {
-    display: none !important;
-  }
 
   .about-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -385,6 +387,7 @@ img {
   .why-us {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    align-items: center;
   }
 
   .services-grid {

@@ -1,16 +1,15 @@
 <section id="home" class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
+  <div class="hero-content container">
     <div class="hero-intro">
       <p>Video Synthesis</p>
       <h1 class="hero-title">{{title}}</h1>
       <p class="hero-mute">
         {{description}}
       </p>
-    </div>
-    <div class="hero-buttons">
-      <a  (click)="onBtnClick(btn1)" class="btn btn-primary btn-lg">{{btn1}}</a>
-      <a (click)="onBtnClick(btn2)" class="btn btn-outline btn-lg">{{btn2}}</a>
+      <div class="hero-buttons">
+        <a (click)="onBtnClick(btn1)" class="btn btn-primary">{{btn1}}</a>
+        <a (click)="onBtnClick(btn2)" class="btn btn-outline">{{btn2}}</a>
+      </div>
     </div>
   </div>
 </section>

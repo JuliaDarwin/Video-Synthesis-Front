@@ -33,6 +33,7 @@
   font-size: 1.25rem;
   font-weight: 500;
   color: navy;
+  cursor: pointer;
 }
 
 .navbar-menu {
@@ -91,6 +92,8 @@
   backdrop-filter: blur(4px);
   margin: 0;
   position: absolute;
+  top: 100%;
+  left: 0;
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -115,7 +118,7 @@
   color: #ff6b35;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .navbar-menu {
     display: flex;
   }

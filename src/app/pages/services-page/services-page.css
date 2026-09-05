@@ -54,34 +54,57 @@
   margin-right: auto;
 }
 
-h2 {
-  text-align: center;
-  margin: 3rem 0;
+.service-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-align: left;
 }
 
 /* SECCIO SERVEIS */
 
 article {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   margin: 3rem 0;
+  padding: 0 1rem;
 }
 
-/* Alternating layout: Swap order of image and text on even cards */
-article:nth-child(even) .service-picture {
+/* Ensure text always comes first on mobile to connect with titles */
+.service-picture {
   order: 2;
 }
 
-article:nth-child(even) .service-info {
+.service-info {
   order: 1;
+}
+
+@media (min-width: 876px) {
+  article {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Reset order for desktop so we can alternate properly */
+  .service-picture,
+  .service-info {
+    order: initial;
+  }
+
+  /* Alternating layout: Swap order of image and text on odd cards */
+  article:nth-of-type(odd) .service-picture {
+    order: 2;
+  }
+
+  article:nth-of-type(odd) .service-info {
+    order: 1;
+  }
 }
 
 .service-info {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
 }
 
 .service-picture {
@@ -119,10 +142,16 @@ p {
 
 .included-list ul {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: 1rem;
   list-style: none;
   margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .included-list ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .included-list li {
@@ -132,10 +161,30 @@ p {
 }
 
 .best-for-list ul {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   margin-top: 1rem;
 }
+
+@media (min-width: 425px) {
+  .best-for-list ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+}
+
+
+@media (min-width: 600px) {
+  .best-for-list ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+
 
 .best-for-list ul li {
   display: flex;
@@ -178,10 +227,11 @@ p {
 
 .cta-services {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
   align-items: center;
-  padding: 4rem;
+  padding: 2rem 1rem;
   margin: 2rem auto;
   font-size: 1.2rem;
   background-color: var(--background-card);
@@ -189,11 +239,28 @@ p {
   border-radius: 16px;
 }
 
+@media (min-width: 768px) {
+  .cta-services {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4rem;
+    gap: 0;
+  }
+}
+
 .cta-services-msg {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .cta-services-msg {
+    flex-direction: row;
+    text-align: left;
+  }
 }
 
 .cta-services-msg p {

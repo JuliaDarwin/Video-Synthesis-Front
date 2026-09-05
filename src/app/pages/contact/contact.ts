@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CtaSection } from '../../components/cta-section/cta-section';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Hero } from '../../components/hero/hero';
+import { ChangeDetectorRef } from '@angular/core';
+import { ContactService, ContactForm } from '../../services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,6 +14,8 @@ import { Hero } from '../../components/hero/hero';
 })
 export class Contact {
   private fb = inject(FormBuilder);
+  private contactService = inject(ContactService);
+  private cdr = inject(ChangeDetectorRef);
 
   currentStep: number = 1;
   isSubmitted: boolean = false;
@@ -47,7 +51,16 @@ export class Contact {
   onSubmit(event: Event) {
     event.preventDefault();
     if (this.contactForm.valid) {
-      this.isSubmitted = true;
+      this.contactService.sendMessage(this.contactForm.value as ContactForm).subscribe({
+        next: (response) => {
+          console.log('Success!', response);
+          this.isSubmitted = true;
+          this.cdr.detectChanges();
+        },
+        error: (err) => {
+          console.error('Error sending message', err);
+        }
+      });
     } else {
       this.contactForm.markAllAsTouched();
     }
@@ -65,10 +78,44 @@ export class Contact {
       description: ['', [Validators.required, Validators.maxLength(1000)]],
       goal: ['', Validators.maxLength(1000)],
       audience: ['', Validators.maxLength(1000)],
-      message: ['', Validators.maxLength(1000)]
+      message: ['', Validators.maxLength(1000)],
+      platforms: this.fb.group({
+        website: [false],
+        instagram: [false],
+        youtube: [false],
+        linkedin: [false]
+      })
+    }),
+
+    requirements: this.fb.group({
+      deliverables: this.fb.group({
+        mainVideo: [false],
+        socialMediaCutdowns: [false],
+        verticalReels: [false],
+        motionGraphics: [false],
+        infographics: [false],
+        subtitles: [false],
+        translations: [false],
+        campaignVisuals: [false],
+        websiteAssets: [false],
+        notSure: [false]
+      }),
+      materials: this.fb.group({
+        rawFootage: [false],
+        interviews: [false],
+        photos: [false],
+        script: [false],
+        brandGuidelines: [false],
+        previousContent: [false],
+        references: [false],
+        dataReports: [false]
+      })
     }),
 
     timeBudget: this.fb.group({
+      startDate: [''],
+      deliverableDate: [''],
+      deadlineFlexible: [''],
       budget: ['', Validators.required],
     }),
 

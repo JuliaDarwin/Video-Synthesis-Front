@@ -1,0 +1,176 @@
+<section class="section section-gray">
+    <div class="container case">
+        <h1>{{isEditMode() ? 'Modify Case' : 'Add New Case'}}</h1>
+        <form (ngSubmit)="saveCase()">
+            <div>
+                <label for="title">Title:</label>
+                <input id="title" name="title" type="text" [(ngModel)]="caseItem().title" required />
+            </div>
+            <div>
+                <label for="slug">Slug:</label>
+                <input id="slug" name="slug" type="text" [(ngModel)]="caseItem().slug" required />
+            </div>
+            <div>
+                <label for="client">Client:</label>
+                <input id="client" name="client" type="text" [(ngModel)]="caseItem().client" />
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" [(ngModel)]="caseItem().description"></textarea>
+            </div>
+            <div>
+                <label for="subhead">Subhead for the hero section:</label>
+                <textarea id="subhead" name="subhead" [(ngModel)]="caseItem().subhead"></textarea>
+            </div>
+            <div>
+                <label for="context">Context:</label>
+                <textarea id="context" name="context" [(ngModel)]="caseItem().context"></textarea>
+            </div>
+            <div>
+                <label for="challenge">Challenge:</label>
+                <textarea id="challenge" name="challenge" [(ngModel)]="caseItem().challenge"></textarea>
+            </div>
+            <div>
+                <label for="period">Period:</label>
+                <input type="text" id="period" name="period" [(ngModel)]="caseItem().period">
+            </div>
+            <div>
+                <label for="services">Services:</label>
+                <textarea id="services" name="services" [(ngModel)]="caseItem().services"></textarea>
+            </div>
+            <div>
+                <label for="thumbnail">Thumbnail:</label>
+                <input id="thumbnail" name="thumbnail" type="file" (change)="onFileSelected($event, 'thumbnail')" accept="image/*" />
+            </div>
+            <div>
+                <label for="externalUrl">External URL:</label>
+                <input id="externalUrl" name="externalUrl" type="text" [(ngModel)]="caseItem().externalUrl" />
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" name="showCase" [(ngModel)]="caseItem().showCase" />
+                    Showcase
+                </label>
+            </div>
+
+            <!-- DELIVERABLES -->
+            <div>
+                <label>Deliverables:</label>
+                @for (item of caseItem().deliverables; track $index) {
+                    <div>
+                        <input 
+                          type="text" 
+                          [name]="'deliverable-' + $index" 
+                          [(ngModel)]="caseItem().deliverables![$index]" 
+                        />
+                        <button type="button" class="remove" (click)="removeItemArray('deliverables', $index)">Remove</button>
+                    </div>
+                }
+                <button type="button" (click)="addItemArray('deliverables')">+ Add Deliverable</button>
+            </div>
+
+            <!-- TASKS -->
+            <div>
+                <label>Tasks:</label>
+                @for (item of caseItem().tasks; track $index) {
+                    <div>
+                        <input 
+                          type="text" 
+                          [name]="'task-' + $index" 
+                          [(ngModel)]="caseItem().tasks![$index]" 
+                        />
+                        <button type="button" class="remove" (click)="removeItemArray('tasks', $index)">Remove</button>
+                    </div>
+                }
+                <button type="button" (click)="addItemArray('tasks')">+ Add Task</button>
+            </div>
+
+            <!-- TAGS -->
+            <div>
+                <label>Tags:</label>
+                @for (item of caseItem().tags; track $index) {
+                    <div>
+                        <input 
+                          type="text" 
+                          [name]="'tag-' + $index" 
+                          [(ngModel)]="caseItem().tags![$index]" 
+                        />
+                        <button type="button" class="remove" (click)="removeItemArray('tags', $index)">Remove</button>
+                    </div>
+                }
+                <button type="button" (click)="addItemArray('tags')">+ Add Tag</button>
+            </div>
+
+            <!-- METRICS -->
+            <div>
+                <label>Metrics:</label>
+                @for (metric of caseItem().metrics; track $index) {
+                    <div>
+                        <input 
+                          type="text" 
+                          placeholder="Number (e.g. +150%)" 
+                          [name]="'metric-number-' + $index" 
+                          [(ngModel)]="caseItem().metrics![$index].number" 
+                        />
+                        <input 
+                          type="text" 
+                          placeholder="Description (e.g. Sales Increase)" 
+                          [name]="'metric-text-' + $index" 
+                          [(ngModel)]="caseItem().metrics![$index].text" 
+                        />
+                        <button type="button" class="remove" (click)="removeMetric($index)">Remove</button>
+                    </div>
+                }
+                <button type="button" (click)="addMetric()">+ Add Metric</button>
+            </div>
+
+            <!-- WORK -->
+            <div>
+                <label>Work Items:</label>
+                @for (workItem of caseItem().work; track $index) {
+                    <div>
+                        <label>Image:</label>
+                        <input 
+                          type="file" 
+                          (change)="onFileSelected($event, workItem)" 
+                          accept="image/*" 
+                        />
+                        <input 
+                          type="text" 
+                          placeholder="Description" 
+                          [name]="'work-desc-' + $index" 
+                          [(ngModel)]="caseItem().work![$index].description" 
+                        />
+                        <button type="button" class="remove" (click)="removeWork($index)">Remove</button>
+                    </div>
+                }
+                <button type="button" (click)="addWork()">+ Add Work Item</button>
+            </div>
+
+            <!-- CAMPAIGN -->
+            <div>
+                <label>Campaign Items:</label>
+                @for (campaignItem of caseItem().campaign; track $index) {
+                    <div>
+                        <input 
+                          type="text" 
+                          placeholder="Title" 
+                          [name]="'campaign-title-' + $index" 
+                          [(ngModel)]="caseItem().campaign![$index].title" 
+                        />
+                        <input 
+                          type="file" 
+                          (change)="onFileSelected($event, campaignItem)" 
+                          accept="image/*" 
+                        />
+                        <button type="button" class="remove" (click)="removeCampaign($index)">Remove</button>
+                    </div>
+                }
+                <button type="button" (click)="addCampaign()">+ Add Campaign Item</button>
+            </div>
+
+            <br />
+            <button type="submit">{{ isEditMode() ? 'Update Case' : 'Create Case' }}</button>
+        </form>
+    </div>
+</section>

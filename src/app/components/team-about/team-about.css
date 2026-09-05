@@ -2,16 +2,22 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 3rem 1.5rem;
+  padding: 1rem 0;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.intro-content {
+  max-width: 800px;
+  width: 100%;
+  text-align: justify;
 }
 
 @media (min-width: 768px) {
   .team-section {
     flex-direction: row;
     gap: 2.5rem;
-    padding: 4rem 2rem;
+    padding: 1rem 0;
   }
 }
 

@@ -1,10 +1,10 @@
 @if (!showOnlyFeatured) {
   <div class="showcase" [class.grid-layout]="!isAnimated">
     @for (item of filteredWorkItems; track item.title) {
-      @if (!item.isShowCase || forHomepage) {
+      @if (!item.showCase || forHomepage) {
         <div class="slide" [class.animated]="isAnimated">
           <div class="pic-wrapper">
-            <img [src]="item.picture" />
+            <img [src]="item.thumbnail" />
             <div class="pic-overlay">
               <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study"
                 >View Case Study</a
@@ -18,7 +18,7 @@
               <p>{{ item.description }}</p>
             </div>
 
-            @if (showCategories) {
+            @if (showCategories && item.tags && item.tags.length) {
               <div class="showcase-filters">
                 @for (tag of item.tags; track tag) {
                   <button class="filter-badge filter-blue">{{ tag }}</button>
@@ -35,10 +35,10 @@
     @if (isAnimated) {
       <div class="marquee-track animated">
         @for (item of filteredWorkItems; track item.title) {
-          @if (item.isShowCase) {
+          @if (item.showCase) {
             <div class="slide">
               <div class="pic-wrapper">
-                <img [src]="item.picture" [alt]="item.title" />
+                <img [src]="item.thumbnail" [alt]="item.title" />
                 <div class="pic-overlay">
                   <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study"
                     >View Case Study</a
@@ -52,7 +52,7 @@
                   <p>{{ item.description }}</p>
                 </div>
 
-                @if (showCategories) {
+                @if (showCategories && item.tags && item.tags.length) {
                   <div class="showcase-filters">
                     @for (tag of item.tags; track tag) {
                       <button class="filter-badge filter-blue">{{ tag }}</button>
@@ -64,10 +64,10 @@
           }
         }
         @for (item of filteredWorkItems; track item.title + '-dup') {
-          @if (item.isShowCase) {
+          @if (item.showCase) {
             <div class="slide">
               <div class="pic-wrapper">
-                <img [src]="item.picture" [alt]="item.title" />
+                <img [src]="item.thumbnail" [alt]="item.title" />
                 <div class="pic-overlay">
                   <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study"
                     >View Case Study</a
@@ -81,7 +81,7 @@
                   <p>{{ item.description }}</p>
                 </div>
 
-                @if (showCategories) {
+                @if (showCategories && item.tags && item.tags.length) {
                   <div class="showcase-filters">
                     @for (tag of item.tags; track tag) {
                       <button class="filter-badge filter-blue">{{ tag }}</button>
@@ -95,10 +95,10 @@
       </div>
     } @else {
       @for (item of filteredWorkItems; track item.title) {
-        @if (item.isShowCase) {
+        @if (item.showCase) {
           <div class="slide">
             <div class="pic-wrapper">
-              <img [src]="item.picture" [alt]="item.title" />
+              <img [src]="item.thumbnail" [alt]="item.title" />
               <div class="pic-overlay">
                 <a [routerLink]="['/case-study', item.slug]" class="btn btn-case-study"
                   >View Case Study</a
@@ -112,7 +112,7 @@
                 <p>{{ item.description }}</p>
               </div>
 
-              @if (showCategories) {
+              @if (showCategories && item.tags && item.tags.length) {
                 <div class="showcase-filters">
                   @for (tag of item.tags; track tag) {
                     <button class="filter-badge filter-blue">{{ tag }}</button>
@@ -128,10 +128,10 @@
 } @else if (showOnlyFeatured && !forHomepage) {
   <div class="featured-work-page">
     @for (item of filteredWorkItems; track item.title) {
-      @if (item.isShowCase) {
+      @if (item.showCase) {
         <div class="featured-work">
           <div class="presentation">
-            @if (showCategories) {
+            @if (showCategories && item.tags && item.tags.length) {
               <div class="showcase-filters">
                 @for (tag of item.tags; track tag) {
                   <button class="filter-badge filter-blue">{{ tag }}</button>
@@ -142,24 +142,29 @@
               <h4>{{ item.title }}</h4>
               <p>{{ item.description }}</p>
             </div>
-            <div class="tasks">
-              <p class="subtitle">What we did</p>
-              @for (task of item.tasks; track task) {
-                <div class="task">
-                  <p>{{ task }}</p>
-                </div>
-              }
-            </div>
-          </div>
-          <div class="recent-work">
-            <p class="subtitle">Recent work</p>
-            @for (work of item.work; track $index) {
-              <div class="work">
-                <img [src]="work.image" />
-                <p>{{ work.description }}</p>
+            @if (item.tasks && item.tasks.length) {
+              <div class="tasks">
+                <p class="subtitle">What we did</p>
+                @for (task of item.tasks; track task) {
+                  <div class="task">
+                    <p>{{ task }}</p>
+                  </div>
+                }
               </div>
             }
-            <button class="btn btn-primary">See more details</button>
+          </div>
+          <div class="recent-work">
+            @if (item.work && item.work.length) {
+              <p class="subtitle">Recent work</p>
+              @for (work of item.work; track $index) {
+                <a [routerLink]="['/case-study', item.slug]"><div class="work">
+                  <img [src]="work.image" />
+                  <p>{{ work.description }}</p>
+                </div></a>
+              }
+            }
+            <!-- <button class="btn btn-primary">See more details</button> -->
+            <a [routerLink]="['/case-study', item.slug]" class="btn btn-primary">See more details</a>
           </div>
         </div>
       }

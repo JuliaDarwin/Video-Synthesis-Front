@@ -109,7 +109,7 @@ h4 {
 .slide:hover,
 .featured-work:hover {
   transform: translateY(-4px);
-  border-color: var(--secondary-color);
+  border: 0.6px solid var(--secondary-color);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -242,14 +242,14 @@ h4 {
 .featured-work {
   margin-top: 2rem;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  border: 2px solid black;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: flex-start;
   padding: 2rem;
-  border: 2px solid transparent;
   border-radius: 1rem;
   overflow: hidden;
+  border: 1px solid var(--border-color);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   transition:
     transform 0.3s ease,
@@ -262,7 +262,7 @@ h4 {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 65%;
+  width: 100%;
   gap: 1rem;
 }
 
@@ -272,7 +272,12 @@ h4 {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1rem;
-  width: 40%;
+  width: 100%;
+}
+
+.recent-work a:not(.btn) {
+  text-decoration: none;
+  color: var(--text-muted);
 }
 
 /* .recent-work button:hover {
@@ -281,7 +286,7 @@ h4 {
 
 .work {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   overflow: hidden;
   gap: 1rem;
@@ -298,14 +303,58 @@ h4 {
 
 .work img {
   height: 100%;
-  width: 30%;
+  width: 100%;
+  aspect-ratio: 16/9;
   object-fit: cover;
+}
+
+.work:hover {
+  background-color: var(--background-card);
 }
 
 .task {
   border-left: 2px solid var(--primary-color);
   padding-left: 1rem;
   margin-top: 0.5rem;
+  color: var(--text-muted);
+}
+
+@media (min-width:1024px) {
+  .featured-work {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .presentation {
+    width: 58%;
+  }
+
+  .recent-work {
+    width: 38%;
+  }
+}
+
+@media (min-width:425px) {
+  .work {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .work img {
+    width: 30%;
+  }
 }
 
 /* .showcase-thumbnail {

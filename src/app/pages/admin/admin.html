@@ -1,0 +1,23 @@
+<section class="section section-gray">
+    <div class="container cases">
+        <h1>Tatet's Case Studies</h1>
+        <div class="search">
+            <label for="search">Search your case by title: </label>
+            <input type="text" name="search" id="search" [ngModel]="searchWord()" (ngModelChange)="searchWord.set($event)" placeholder="ex: Living Lakes" >
+        </div>
+        <ul class="cases-list">
+            @for(item of filteredCases(); track $index){
+                <li>
+                    <p>{{item.title}}</p>
+                    <a [routerLink]="['/admin-case', item.slug]" class="btn-secondary btn">See or Modify Case</a>
+                    <button (click)="deleteCase(item.slug, item.title)" class="btn-secondary btn">Delete Case</button>
+                </li>
+            }
+        </ul>
+        @if(filteredCases().length === 0){
+            <p class="error">Tatet careful and search again because no case was found...  Did you have a coffee this morning?</p>
+        }
+        <a class="btn btn-primary" [routerLink]="['/admin-case']">Add new case</a>
+        <button class="btn btn-secondary" (click)="logout()" style="margin-left: 10px;">Logout</button>
+    </div>
+</section>

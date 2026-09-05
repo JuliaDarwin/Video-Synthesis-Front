@@ -71,7 +71,7 @@ export class ServicesPage {
         { name: 'Ocean Science', icon: 'water' },
       ],
 
-      image: 'video-editing.jpg',
+      image: 'video-editing-2.jpg',
     },
 
     {
@@ -101,7 +101,7 @@ export class ServicesPage {
         { name: 'Conservation Projects', icon: 'eco' },
       ],
 
-      image: 'video-editing.jpg',
+      image: 'video-editing-3.jpg',
     },
   ];
 

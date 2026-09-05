@@ -1,46 +1,170 @@
-<section class="hero-case-study">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="project-tag">Featured Case Study</p>
-    <h1 class="hero-title">{{ projectItem.title }}</h1>
-    <p class="hero-description">{{ projectItem.subhead }}</p>
-  </div>
-</section>
 
-<!-- basic info section -->
-<section class="section case-study-content">
-  <div class="container">
-    <div class="glass-card details-grid">
-      <div class="detail-item">
-        <h3>Period</h3>
-        <p>{{ projectItem.period }}</p>
+@if(projectItem()){
+  <section class=" section-gray">
+    <div class="container-case-study">
+      <div class="back-navigation">
+        <a [routerLink]="['/work']">Back to Projects</a>
       </div>
-      <div class="detail-item">
-        <h3>Services</h3>
-        <p>{{ projectItem.services }}</p>
+      <div class="intro">
+        <h1>{{ projectItem()?.title }}</h1>
+        <p class="hero-description">{{ projectItem()?.subhead }}</p>
       </div>
-      <div class="detail-item">
-        <h3>Website</h3>
-        <a href="{{ projectItem.website }}">{{ projectItem.website }}</a>
+      <div class="details-container">
+        <div class="details-card">
+          <div class="detail-item">
+          <p>Period</p>
+          <p>{{ projectItem()?.period }}</p>
+        </div>
+        <div class="detail-item">
+          <p>Services</p>
+          <p>{{ projectItem()?.services }}</p>
+        </div>
+        <div class="detail-item">
+          <p>Website</p>
+          <a [href]="projectItem()?.externalUrl" target="_blank">{{ projectItem()?.externalUrl }}</a>
+        </div>
+      </div>
+      </div>
+      <div class="video-container">
+        <img [src]="projectItem()?.thumbnail">
       </div>
     </div>
+  
+</section>
+
+<section class="section-gray">
+  <div class="container-case-study"> 
+    @if (projectItem()?.deliverables && projectItem()?.deliverables?.length) {
+        <div class="deliverables-container">
+          <p>What we delivered</p>
+          <div class="deliverables">
+            @for(deliverable of projectItem()?.deliverables; track $index){
+              <div class="deliverable">{{deliverable}}</div>
+            }
+          </div>
+        </div>
+    }
+    <p>{{ projectItem()?.context }}</p>
+    <p>{{projectItem()?.challenge}}</p>
+    
+    @if (projectItem()?.metrics && projectItem()?.metrics?.length) {
+        <div class="metrics">
+          @for(metric of projectItem()?.metrics; track $index){
+            <div class="metric">
+              <p class="metric-number">{{ animatedMetrics()[$index] || metric.number }}</p>
+              <p>{{metric.text}}</p>
+            </div>
+          }
+        </div>
+      }
+      <div class="video-container">
+        <iframe 
+        [src]="getSafeUrl(projectItem()?.mainVideo?.url)"
+  frameborder="0"
+  loading="lazy"
+  allowfullscreen></iframe>
+      </div>
+  </div>
+  
+</section>
+
+<section class="section-gray">
+  <div class="container-more-pieces">
+    <h2>More pieces for the project</h2>
+    <div class="pieces-container">
+      @for(video of projectItem()?.videos; track $index){
+        <div class="single-piece" (click)="openVideoModal(video.url)">
+          <div class="video-preview-wrapper">
+            <iframe
+              [src]="getSafeUrl(video.url)"
+              loading="lazy"
+              frameborder="0">
+            </iframe>
+            <div class="play-overlay">
+              <span>▶ Watch Video</span>
+            </div>
+         </div>
+          <p>{{video.description}}</p>
+        </div>
+      }
+    </div>
+    
+  </div>
+</section>
+@if (projectItem()?.campaign && projectItem()?.campaign?.length) {
+<section class="section-gray">
+  <div class="container-case-study">
+      
+      <div class="campaign-wrapper">
+        <h2>Campaign Materials</h2>
+        <div class="campaign-grid">
+          
+          @for(c of projectItem()?.campaign; track $index){
+            <div>
+              <img [src]="c.image">
+              <p>{{c.title}}</p>
+            </div>
+          }
+        </div>
+      </div>
+      
+      <div class="cta-button">
+      <a [routerLink]="['/contact']" class="btn btn-primary btn-">Start Your Project</a>
+    </div>
+    </div>
+</section>
+}
+@if (selectedVideoUrl()) {
+  <div class="video-modal-backdrop" (click)="closeVideoModal()">
+    <div class="video-modal-content" (click)="$event.stopPropagation()">
+      <button class="video-modal-close" (click)="closeVideoModal()">✕</button>
+      <iframe
+        [src]="getSafeUrl(selectedVideoUrl()!)"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+}
+}
+<!-- 
+<section class="section section-gray">
+  
+
+
+    </article>
   </div>
 </section>
 
-<!-- video section -->
-<section class="picture-section">
-  <img [src]="projectItem.picture" class="project-image" />
+<section class="section section-white">
+  <div class="container">
+    <article class="content-block">
+      <h2 class="section-subtitle">Our participation</h2>
+      <p>{{projectItem()?.challenge}}</p>
+      
+    </article>
+  </div>
 </section>
 
-<!-- CONTENT -->
 <section class="section section-gray">
   <div class="container">
     <article class="content-block">
-      <h2>Context</h2>
-      <p>{{ projectItem.context }}</p>
+      <h2 class="section-subtitle">Campaign Materials</h2>
+      @if (projectItem()?.campaign && projectItem()?.campaign?.length) {
+        <div class="campaign-grid">
+          @for(c of projectItem()?.campaign; track $index){
+            <div>
+              <img [src]="c.image">
+              <p>{{c.title}}</p>
+            </div>
+          }
+        </div>
+      }
     </article>
-
-    <article class="content-block">
+  </div>
+</section>
+    <!-- <article class="content-block">
       <h2>Challenge</h2>
       <p>{{ projectItem.challenge }}</p>
     </article>
@@ -55,42 +179,8 @@
       <p>{{ projectItem.creativeApproach }}</p>
     </article>
   </div>
-</section>
-
-<!-- DELIVERABLES -->
-<section class="list-section" *ngIf="selectedWorkItem.deliverables?.length">
-  <h2>Deliverables</h2>
-
-  <ul>
-    <li *ngFor="let item of projectItem.deliverables">
-      {{ item }}
-    </li>
-  </ul>
-</section>
-
-<!-- RESULTS -->
-<section class="list-section" *ngIf="selectedWorkItem.results?.length">
-  <h2>Results / Impact</h2>
-
-  <ul>
-    <li *ngFor="let item of projectItem.results">
-      {{ item }}
-    </li>
-  </ul>
-</section>
-
-<!-- RELATED -->
-<section class="list-section" *ngIf="projectItem.relatedServices?.length">
-  <h2>Related Services</h2>
-
-  <div class="service-grid">
-    <div class="service" *ngFor="let service of projectItem.relatedServices">
-      {{ service }}
-    </div>
-  </div>
-</section>
-
-<!-- <div class="case-study-body">
+</section> 
+ <div class="case-study-body">
     <h2>The Challenge</h2>
     <p>
       Ocean science and marine conservation stories are often complex, filled with technical data, and hard for the general public to connect with. The goal of this project was to translate field science and offshore footage into cinematic campaigns that inspire immediate action and make complex science understandable.
@@ -100,8 +190,10 @@
     <p>
       By combining our biological expertise with professional editing, scriptwriting, and motion design, we created high-retention video content optimized for platform algorithms and audience engagement.
     </p>
-  </div> -->
+  </div> 
 
 <div class="back-navigation">
   <a routerLink="/work" class="btn btn-outline-orange btn-lg">← Back to Our Work</a>
 </div>
+}
+ -->
