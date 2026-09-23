@@ -1,59 +1,65 @@
-# TfmFront
+# Video Synthesis - Frontend (`tfmFront`)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+> The frontend application for **Video Synthesis**, a professional video editing and motion graphics agency specializing in ocean science, marine conservation, and professional sailing.
 
-## Development server
+This repository contains the user-facing portfolio website and a secured administrative dashboard for managing content. It is built with a modern web stack designed for performance, maintainability, and a smooth user experience.
 
-To start a local development server, run:
+## 🚀 Tech Stack
 
-```bash
-ng serve
-```
+- **Framework:** [Angular 21](https://angular.dev/)
+- **Language:** TypeScript
+- **Styling:** CSS
+- **Testing:** [Vitest](https://vitest.dev/)
+- **Core Libraries:** RxJS
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## ✨ Key Features
 
-## Code scaffolding
+- **Dynamic Homepage:** Beautiful landing page highlighting services, reviews, and a selection of curated case studies.
+- **Case Studies Showcase:** Detailed portfolio views showcasing video projects related to marine science and conservation.
+- **Admin Dashboard:** A secured area allowing administrators to manage case studies, view contact requests, and handle estimates.
+- **Contact & Estimate Forms:** Seamless user flows for potential clients to book calls and request project estimates.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📋 Prerequisites
 
-```bash
-ng generate component component-name
-```
+Before you begin, ensure you have the following installed:
+- **Node.js** (v18 or higher recommended)
+- **npm** (v9 or higher) or **yarn**
+- **Angular CLI** (`npm install -g @angular/cli`)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🛠️ Getting Started
 
-```bash
-ng generate --help
-```
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd tfmFront
+   ```
 
-## Building
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-To build the project run:
+3. **Start the development server:**
+   ```bash
+   ng serve
+   ```
+   Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+## 🏗️ Building for Production
+
+To compile the project for production, run:
 ```bash
 ng build
 ```
+The build artifacts will be stored in the `dist/` directory, optimized for deployment.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🧪 Testing
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
+To execute the unit tests via Vitest:
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## 🤝 Contributing
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
