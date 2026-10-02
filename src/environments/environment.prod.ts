@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://video-synthesis-back.onrender.com'
+    apiUrl: 'https://video-synthesis-back.onrender.com/api'
 };
 
 //this is going to be only for production
