@@ -108,6 +108,17 @@ export class AdminCase implements OnInit {
     this.caseItem().campaign?.splice(index, 1);
   }
 
+  addVideo(): void {
+    if (!this.caseItem().videos) {
+      this.caseItem().videos = [];
+    }
+    this.caseItem().videos!.push({ url: '', description: '' });
+  }
+
+  removeVideo(index: number): void {
+    this.caseItem().videos?.splice(index, 1);
+  }
+
   onFileSelected(event: Event, target: string | { image: string }): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {

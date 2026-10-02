@@ -169,6 +169,53 @@
                 <button type="button" (click)="addCampaign()">+ Add Campaign Item</button>
             </div>
 
+            <!-- MAIN VIDEO -->
+            <div>
+                <label>Main Video:</label>
+                @if (caseItem().mainVideo) {
+                    <div>
+                        <input 
+                          type="text" 
+                          placeholder="Video URL" 
+                          name="mainVideoUrl" 
+                          [(ngModel)]="caseItem().mainVideo!.url" 
+                        />
+                        <input 
+                          type="text" 
+                          placeholder="Description" 
+                          name="mainVideoDesc" 
+                          [(ngModel)]="caseItem().mainVideo!.description" 
+                        />
+                        <button type="button" class="remove" (click)="caseItem().mainVideo = undefined">Remove Main Video</button>
+                    </div>
+                } @else {
+                    <button type="button" (click)="caseItem().mainVideo = { url: '', description: '' }">+ Add Main Video</button>
+                }
+            </div>
+
+            <!-- VIDEOS -->
+            <div>
+                <label>Additional Videos:</label>
+                @for (video of caseItem().videos; track $index) {
+                    <div>
+                        <input 
+                          type="text" 
+                          placeholder="Video URL" 
+                          [name]="'video-url-' + $index" 
+                          [(ngModel)]="caseItem().videos![$index].url" 
+                        />
+                        <input 
+                          type="text" 
+                          placeholder="Description" 
+                          [name]="'video-desc-' + $index" 
+                          [(ngModel)]="caseItem().videos![$index].description" 
+                        />
+                        <button type="button" class="remove" (click)="removeVideo($index)">Remove</button>
+                    </div>
+                }
+                <button type="button" (click)="addVideo()">+ Add Video</button>
+            </div>
+
             <br />
             <button type="submit">{{ isEditMode() ? 'Update Case' : 'Create Case' }}</button>
         </form>
