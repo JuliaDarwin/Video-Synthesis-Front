@@ -29,10 +29,15 @@
   height: 64px;
 }
 
-.navbar-logo h1 {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: navy;
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  background-color: black;
+}
+
+.navbar-logo img {
+  height: 65px;
+  width: auto;
   cursor: pointer;
 }
 

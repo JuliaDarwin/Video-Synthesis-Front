@@ -13,10 +13,10 @@ import { Login } from './pages/login/login';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: Homepage, title: 'Tatet' },
-  { path: 'work', component: Work, title: 'Our Work' },
-  { path: 'services', component: ServicesPage, title: 'Our Services' },
-  { path: 'team', component: Team, title: 'Our Team' },
+  { path: '', component: Homepage, title: 'Video Synthesis' },
+  { path: 'work', component: Work, title: 'Work' },
+  { path: 'services', component: ServicesPage, title: 'Services' },
+  { path: 'team', component: Team, title: 'Team' },
   { path: 'contact', component: Contact, title: 'Contact' },
   { path: 'estimate', component: Estimate, title: 'Estimate Project' },
   { path: 'case-study/:projectName', component: CaseStudyPage, title: 'Case Study' },

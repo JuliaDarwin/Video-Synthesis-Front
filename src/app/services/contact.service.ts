@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environments';
 
 export interface ContactForm {
   aboutYou?: {
@@ -61,8 +62,7 @@ export interface ContactForm {
     providedIn: 'root'
 })
 export class ContactService {
-    // Update this to match your Spring Boot port and context path
-    private apiUrl = 'http://localhost:8080/api/contact';
+    private apiUrl = environment.apiUrl + '/contact';
 
     constructor(private http: HttpClient) { }
 

@@ -24,7 +24,7 @@ img {
   background-image: url('/sea-hero.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.2;
+  opacity: 0.4;
   z-index: 1;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
   -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
@@ -248,7 +248,8 @@ img {
 .card-process {
   width: 100%;
   max-width: 280px;
-  min-height: 320px; /* Guarantees enough height for the text */
+  min-height: 320px;
+  /* Guarantees enough height for the text */
   perspective: 1000px;
   text-align: center;
 }
@@ -272,7 +273,8 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem; /* Reduced padding to give text more breathing room */
+  padding: 1.5rem;
+  /* Reduced padding to give text more breathing room */
   background-color: var(--background-card);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--border-color);
@@ -289,7 +291,8 @@ img {
 }
 
 .card-back p {
-  font-size: clamp(0.85rem, 3vw, 0.95rem); /* Scales text slightly on smaller screens */
+  font-size: clamp(0.85rem, 3vw, 0.95rem);
+  /* Scales text slightly on smaller screens */
   line-height: 1.5;
   color: var(--text-color);
   margin: 0;

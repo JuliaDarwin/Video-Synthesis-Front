@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environments';
 
 // This interface matches your backend's AuthResponseDTO
 export interface AuthResponse {
@@ -12,7 +13,7 @@ export interface AuthResponse {
     providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = 'http://localhost:8080/api/auth/login';
+    private apiUrl = environment.apiUrl + '/auth/login';
 
     constructor(private http: HttpClient) { }
 
