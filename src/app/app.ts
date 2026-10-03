@@ -22,20 +22,34 @@ export class App implements AfterViewInit {
     });
   }
 
+  private observer: IntersectionObserver | null = null;
+  private mutationObserver: MutationObserver | null = null;
+
   private setupScrollObserver(): void {
     if (typeof window === 'undefined') return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    if (!this.observer) {
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+            }
+          });
+        },
+        { threshold: 0.05 }
+      );
+    }
 
-    document.querySelectorAll('section, .section').forEach(el => observer.observe(el));
+    document.querySelectorAll('section, .section').forEach(el => this.observer!.observe(el));
+
+    if (!this.mutationObserver) {
+      this.mutationObserver = new MutationObserver(() => {
+        document.querySelectorAll('section:not(.revealed), .section:not(.revealed)').forEach(el => {
+          this.observer!.observe(el);
+        });
+      });
+      this.mutationObserver.observe(document.body, { childList: true, subtree: true });
+    }
   }
 }
