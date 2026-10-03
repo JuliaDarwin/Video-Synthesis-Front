@@ -41,6 +41,11 @@
             <div>
                 <label for="thumbnail">Thumbnail:</label>
                 <input id="thumbnail" name="thumbnail" type="file" (change)="onFileSelected($event, 'thumbnail')" accept="image/*" />
+                @if (caseItem().thumbnail) {
+                    <div style="margin-top: 8px;">
+                        <img [src]="caseItem().thumbnail" alt="Thumbnail preview" style="max-height: 120px; display: block;" />
+                    </div>
+                }
             </div>
             <div>
                 <label for="externalUrl">External URL:</label>
@@ -135,6 +140,11 @@
                           (change)="onFileSelected($event, workItem)" 
                           accept="image/*" 
                         />
+                        @if (workItem.image) {
+                            <div style="margin-top: 4px;">
+                                <img [src]="workItem.image" alt="Work item preview" style="max-height: 80px; display: block;" />
+                            </div>
+                        }
                         <input 
                           type="text" 
                           placeholder="Description" 
@@ -163,6 +173,11 @@
                           (change)="onFileSelected($event, campaignItem)" 
                           accept="image/*" 
                         />
+                        @if (campaignItem.image) {
+                            <div style="margin-top: 4px;">
+                                <img [src]="campaignItem.image" alt="Campaign item preview" style="max-height: 80px; display: block;" />
+                            </div>
+                        }
                         <button type="button" class="remove" (click)="removeCampaign($index)">Remove</button>
                     </div>
                 }

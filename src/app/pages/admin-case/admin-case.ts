@@ -124,6 +124,15 @@ export class AdminCase implements OnInit {
     if (input.files && input.files[0]) {
       const file = input.files[0];
 
+      // Immediately show picture preview
+      const previewUrl = URL.createObjectURL(file);
+      if (typeof target === 'string') {
+        this.caseItem.update(prev => ({ ...prev, [target]: previewUrl }));
+      } else {
+        target.image = previewUrl;
+        this.caseItem.update(prev => ({ ...prev }));
+      }
+
       const formData = new FormData();
       formData.append('file', file);
 
@@ -133,9 +142,10 @@ export class AdminCase implements OnInit {
       this.http.post<{ imageUrl: string }>(`${environment.apiUrl}/upload`, formData, { headers }).subscribe({
         next: (response) => {
           if (typeof target === 'string') {
-            (this.caseItem() as any)[target] = response.imageUrl;
+            this.caseItem.update(prev => ({ ...prev, [target]: response.imageUrl }));
           } else {
             target.image = response.imageUrl;
+            this.caseItem.update(prev => ({ ...prev }));
           }
         },
         error: (err) => console.error('Upload failed:', err)
