@@ -1,5 +1,19 @@
 
-@if(projectItem()){
+@if (isLoading()) {
+  <section class="section section-gray">
+    <div class="container" style="min-height: 50vh; display: flex; align-items: center; justify-content: center;">
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Loading project...</p>
+    </div>
+  </section>
+} @else if (hasError() || !projectItem()) {
+  <section class="section section-gray">
+    <div class="container" style="min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center;">
+      <h2 style="color: var(--text-color); font-size: 2rem;">Case study not found</h2>
+      <p style="color: var(--text-muted);">We couldn't find the project you're looking for.</p>
+      <a [routerLink]="['/work']" class="btn btn-primary" style="display: inline-block;">Back to Projects</a>
+    </div>
+  </section>
+} @else {
   <section class=" section-gray">
     <div class="container-case-study">
       <div class="back-navigation">

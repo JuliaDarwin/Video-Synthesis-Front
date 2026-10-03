@@ -15,38 +15,52 @@ export class CaseStudyPage implements OnInit {
   projectItem = signal<CaseStudy | null>(null);
   selectedVideoUrl = signal<string | null>(null);
   animatedMetrics = signal<string[]>([]);
+  isLoading = signal<boolean>(true);
+  hasError = signal<boolean>(false);
 
   constructor(private caseStudyService: CaseStudyService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.loadCaseStudy();
+    this.route.paramMap.subscribe(params => {
+      const slugParam = params.get('projectName');
+      if (slugParam) {
+        this.loadCaseStudy(slugParam);
+      } else {
+        this.isLoading.set(false);
+      }
+    });
   }
 
-  loadCaseStudy(): void {
-    const slugParam = this.route.snapshot.paramMap.get('projectName');
-    if (slugParam) {
-      this.caseStudyService.getCaseStudyBySlug(slugParam).subscribe({
-        next: (data) => {
-          this.projectItem.set(data);
-          if (data.metrics) {
-            // Initialize with '0's
-            this.animatedMetrics.set(data.metrics.map(() => '0'));
-            data.metrics.forEach((metric, index) => {
-              this.animateCountUp(metric.number, 3000, (currentValue) => {
-                this.animatedMetrics.update((list) => {
-                  const updated = [...list];
-                  updated[index] = currentValue;
-                  return updated;
-                });
+  loadCaseStudy(slug: string): void {
+    this.isLoading.set(true);
+    this.hasError.set(false);
+    console.log('Loading case study with slug:', slug);
+
+    this.caseStudyService.getCaseStudyBySlug(slug).subscribe({
+      next: (data) => {
+        console.log('Case study loaded successfully:', data);
+        this.projectItem.set(data);
+        this.isLoading.set(false);
+
+        if (data && data.metrics && Array.isArray(data.metrics)) {
+          this.animatedMetrics.set(data.metrics.map(() => '0'));
+          data.metrics.forEach((metric, index) => {
+            this.animateCountUp(metric?.number, 3000, (currentValue) => {
+              this.animatedMetrics.update((list) => {
+                const updated = [...list];
+                updated[index] = currentValue;
+                return updated;
               });
             });
-          }
-        },
-        error: (err) => {
-          console.error('Error fetching case study:', err);
+          });
         }
-      });
-    }
+      },
+      error: (err) => {
+        console.error('Error fetching case study for slug ' + slug + ':', err);
+        this.isLoading.set(false);
+        this.hasError.set(true);
+      }
+    });
   }
 
   getSafeUrl(url: string | undefined | null): SafeResourceUrl {
@@ -82,11 +96,15 @@ export class CaseStudyPage implements OnInit {
   // }
 
   // Helper function to animate counting up
-  animateCountUp(targetStr: string, duration = 1500, onUpdate: (val: string) => void): void {
-    // Extract digits (e.g., "293.800" -> 293800)
-    const targetNum = parseInt(targetStr.replace(/\D/g, ''), 10);
+  animateCountUp(targetStr: string | number | undefined | null, duration = 1500, onUpdate: (val: string) => void): void {
+    if (targetStr === null || targetStr === undefined || targetStr === '') {
+      onUpdate('');
+      return;
+    }
+    const strVal = String(targetStr);
+    const targetNum = parseInt(strVal.replace(/\D/g, ''), 10);
     if (isNaN(targetNum)) {
-      onUpdate(targetStr);
+      onUpdate(strVal);
       return;
     }
 
@@ -97,13 +115,12 @@ export class CaseStudyPage implements OnInit {
       const progress = Math.min((timestamp - startTime) / duration, 1);
       const current = Math.floor(progress * targetNum);
 
-      // Formats with dots/commas (e.g., 293800 -> "293.800")
       onUpdate(current.toLocaleString());
 
       if (progress < 1) {
         requestAnimationFrame(step);
       } else {
-        onUpdate(targetStr); // Ensure exact final value is set
+        onUpdate(strVal);
       }
     };
 
