@@ -11,23 +11,31 @@
       </div>
       <div class="details-container">
         <div class="details-card">
+        @if (projectItem()?.period) {
           <div class="detail-item">
-          <p>Period</p>
-          <p>{{ projectItem()?.period }}</p>
-        </div>
-        <div class="detail-item">
-          <p>Services</p>
-          <p>{{ projectItem()?.services }}</p>
-        </div>
-        <div class="detail-item">
-          <p>Website</p>
-          <a [href]="projectItem()?.externalUrl" target="_blank">{{ projectItem()?.externalUrl }}</a>
-        </div>
+            <p>Period</p>
+            <p>{{ projectItem()?.period }}</p>
+          </div>
+        }
+        @if (projectItem()?.services) {
+          <div class="detail-item">
+            <p>Services</p>
+            <p>{{ projectItem()?.services }}</p>
+          </div>
+        }
+        @if (projectItem()?.externalUrl) {
+          <div class="detail-item">
+            <p>Website</p>
+            <a [href]="projectItem()?.externalUrl" target="_blank">{{ projectItem()?.externalUrl }}</a>
+          </div>
+        }
       </div>
       </div>
-      <div class="video-container">
-        <img [src]="projectItem()?.thumbnail">
-      </div>
+      @if (projectItem()?.thumbnail) {
+        <div class="video-container">
+          <img [src]="projectItem()?.thumbnail">
+        </div>
+      }
     </div>
   
 </section>
@@ -44,8 +52,12 @@
           </div>
         </div>
     }
-    <p>{{ projectItem()?.context }}</p>
-    <p>{{projectItem()?.challenge}}</p>
+    @if (projectItem()?.context) {
+      <p>{{ projectItem()?.context }}</p>
+    }
+    @if (projectItem()?.challenge) {
+      <p>{{projectItem()?.challenge}}</p>
+    }
     
     @if (projectItem()?.metrics && projectItem()?.metrics?.length) {
         <div class="metrics">
@@ -57,17 +69,21 @@
           }
         </div>
       }
-      <div class="video-container">
-        <iframe 
-        [src]="getSafeUrl(projectItem()?.mainVideo?.url)"
-  frameborder="0"
-  loading="lazy"
-  allowfullscreen></iframe>
-      </div>
+      @if (projectItem()?.mainVideo?.url) {
+        <div class="video-container">
+          <iframe 
+            [src]="getSafeUrl(projectItem()?.mainVideo?.url)"
+            frameborder="0"
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
+        </div>
+      }
   </div>
   
 </section>
 
+@if (projectItem()?.videos && projectItem()?.videos?.length) {
 <section class="section-gray">
   <div class="container-more-pieces">
     <h2>More pieces for the project</h2>
@@ -91,6 +107,7 @@
     
   </div>
 </section>
+}
 @if (projectItem()?.campaign && projectItem()?.campaign?.length) {
 <section class="section-gray">
   <div class="container-case-study">
