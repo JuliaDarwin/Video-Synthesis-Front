@@ -15,7 +15,7 @@
 .logo-track {
   display: flex;
   width: max-content;
-  animation: scroll 20s linear infinite;
+  animation: scroll 50s linear infinite;
   gap: 2rem;
 }
 
@@ -40,6 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  filter: brightness(0) invert(1);
   opacity: 0.6;
   transition: all 0.3s;
 }
@@ -48,6 +49,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .client-logo:hover {
@@ -55,7 +57,7 @@
   opacity: 1;
 }
 
-.client-logo span {
+.client-logo p {
   color: #6b7280;
   font-weight: 500;
 }

@@ -124,15 +124,6 @@ export class AdminCase implements OnInit {
     if (input.files && input.files[0]) {
       const file = input.files[0];
 
-      // Immediately show picture preview
-      const previewUrl = URL.createObjectURL(file);
-      if (typeof target === 'string') {
-        this.caseItem.update(prev => ({ ...prev, [target]: previewUrl }));
-      } else {
-        target.image = previewUrl;
-        this.caseItem.update(prev => ({ ...prev }));
-      }
-
       const formData = new FormData();
       formData.append('file', file);
 

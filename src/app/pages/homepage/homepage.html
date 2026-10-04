@@ -217,7 +217,17 @@
         </div>
         <app-reviews-homepage></app-reviews-homepage>
         <div class="reviews-cta">
-          <a href="#" class="btn btn-outline-orange">See More Reviews on ?????? ↗</a>
+          <button (click)="showComingSoon = true"class="btn btn-outline-orange">See More Reviews ↗</button>
+          @if (showComingSoon) {
+            <div class="popup-overlay" (click)="showComingSoon = false">
+                <div class="popup" (click)="$event.stopPropagation()">
+                    <h3>Coming soon 🚧</h3>
+                    <p>This feature is still under construction.</p>
+
+                   <button (click)="showComingSoon = false">OK</button>  
+    </div>
+  </div>
+}
         </div>
       </div>
     </section>

@@ -14,9 +14,14 @@ export class ClientLogos {
       name: 'The Ocean Race',
     },
     {
-      src: 'logos/team-malizia.png',
+      src: 'logos/malizia.png',
       alt: 'Team Malizia',
       name: 'Team Malizia',
+    },
+    {
+      src: 'logos/racing.png',
+      alt: '11th hour racing',
+      name: '11th Hour Racing',
     },
     {
       src: 'logos/oceana.png',
@@ -24,9 +29,29 @@ export class ClientLogos {
       name: 'Oceana in Europe',
     },
     {
+      src: 'logos/sailing-energy.png',
+      alt: 'Sailing energy',
+      name: 'Sailing energy',
+    },
+    {
       src: 'logos/mongabay.png',
       alt: 'Mongabay',
       name: 'Mongabay',
+    },
+    {
+      src: 'logos/segittur.png',
+      alt: 'Segittur',
+      name: 'Segittur',
+    },
+    {
+      src: 'logos/t-systems.png',
+      alt: 'T-Systems',
+      name: 'T-Systems',
+    },
+    {
+      src: 'logos/ebvb.png',
+      alt: 'EBVB',
+      name: 'EBVB',
     },
     {
       src: 'logos/rockwool.png',
@@ -44,14 +69,19 @@ export class ClientLogos {
       name: 'Living Lakes',
     },
     {
-      src: 'logos/med-sea.svg',
+      src: 'logos/xaloc.png',
+      alt: 'Xaloc',
+      name: 'Xaloc',
+    },
+    {
+      src: 'logos/med-sea-alliance.png',
       alt: 'Med Sea Alliance',
       name: 'Med Sea Alliance',
     },
     {
-      src: 'logos/marilles.jpeg',
-      alt: 'Marilles Foundation',
-      name: 'Marilles Foundation',
+      src: 'logos/toolbox.png',
+      alt: 'Toolbox',
+      name: 'Toolbox',
     },
   ];
 }

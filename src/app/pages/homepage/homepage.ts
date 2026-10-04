@@ -24,4 +24,6 @@ import { TeamAbout } from '../../components/team-about/team-about';
   styleUrl: './homepage.css',
   standalone: true,
 })
-export class Homepage {}
+export class Homepage {
+  showComingSoon = false;
+}

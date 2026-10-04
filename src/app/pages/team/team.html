@@ -1,44 +1,12 @@
-<app-hero
+<!-- <app-hero
 title="Scientists, filmmakers and digital communicators"
 description="We bring together marine science, marketing, web design, video editing, motion graphics and social media strategy to help ocean stories travel further."
-btn1="Start a Project"></app-hero>
+btn1="Start a Project"></app-hero> -->
 
 
-<!-- cards -->
 <section class="section section-white">
   <app-team-about></app-team-about>
 </section>
-<!-- <section class="section section-gray">
-    <div class="container">
-      <div class="team-section">
-        <div class="big-card">
-          <div class="img">
-            <img src="https://images.unsplash.com/photo-1643324256354-79f75b773709?w=640&fit=crop" alt="Sergi Villalba">
-          </div>
-          <div class="about-content">
-            <h4>Sergi Villalba</h4>
-            <p class="role">Founder & Creative / Scientific Director</p>
-            <p class="about-text">Sergi is a marine biologist and oceanographer turned filmmaker and science communicator. He leads creative direction, video editing, motion graphics, scriptwriting and scientific accuracy across Video Synthesis projects.
-
-His work spans ocean science, marine conservation and professional sailing, including collaborations with The Ocean Race, Team Malizia, Oceana in Europe, Mongabay, Living Lakes and other international organizations. He brings together scientific rigor, visual storytelling and technical post-production to make complex ocean stories accessible and impactful.</p>
-          </div>
-        </div>
-
-        <div class="big-card">
-          <div class="img">
-            <img src="https://images.unsplash.com/photo-1643324256354-79f75b773709?w=640&fit=crop" alt="Andrea Navarro">
-          </div>
-          <div class="about-content">
-            <h4>Andrea Navarro</h4>
-            <p class="role">Digital Communications Officer</p>
-            <p class="about-text">Andrea Navarro brings together marketing, web design, video editing and social media strategy. She helps shape how each project lives beyond the final edit — from campaign planning and platform adaptation to digital distribution and audience engagement.
-
-Her work focuses on creating coherent, multi-platform campaigns that connect science and conservation stories with global audiences. By translating complex scientific messaging into engaging digital formats, she ensures every project achieves maximum visibility, engagement, and real-world impact across web and social channels.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
 <section class="section section-white">
   <div class="container">
@@ -73,7 +41,11 @@ Her work focuses on creating coherent, multi-platform campaigns that connect sci
   <div class="container">
     <h4>Organizations we worked with</h4>
     <div class="logos-container">
-      <img src="logos-no.png" alt="Organizations we worked with" />
+      @for (logo of logos; track $index) {
+      <div class="client-item">
+        <img class="client-logo" src="{{ logo.src }}" alt="{{ logo.alt }}" />
+      </div>
+    }
     </div>
   </div>
 </section>
