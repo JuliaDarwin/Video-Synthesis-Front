@@ -1,8 +1,29 @@
 
 @if (isLoading()) {
-  <section class="section section-gray">
-    <div class="container" style="min-height: 50vh; display: flex; align-items: center; justify-content: center;">
-      <p style="color: var(--text-muted); font-size: 1.1rem;">Loading project...</p>
+  <section class="section-gray">
+    <div class="container-case-study cs-skeleton">
+      <!-- back link -->
+      <div class="sk sk-back"></div>
+
+      <!-- title + subtitle -->
+      <div class="sk sk-h1"></div>
+      <div class="sk sk-subtitle"></div>
+      <div class="sk sk-subtitle short"></div>
+
+      <!-- meta strip -->
+      <div class="sk-meta-strip">
+        <div class="sk sk-meta"></div>
+        <div class="sk sk-meta"></div>
+        <div class="sk sk-meta"></div>
+      </div>
+
+      <!-- hero image -->
+      <div class="sk sk-hero"></div>
+
+      <!-- text blocks -->
+      <div class="sk sk-text"></div>
+      <div class="sk sk-text"></div>
+      <div class="sk sk-text short"></div>
     </div>
   </section>
 } @else if (hasError() || !projectItem()) {

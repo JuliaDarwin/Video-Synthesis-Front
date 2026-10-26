@@ -409,3 +409,56 @@ hr {
     font-size: 2.5rem;
   }
 } */
+
+/* ── Case Study Skeleton loader ─────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: -700px 0; }
+  100% { background-position:  700px 0; }
+}
+
+.cs-skeleton {
+  margin-top: 4rem; /* mirrors .back-navigation margin-top */
+}
+
+/* Shared shimmer applied to every .sk element */
+.sk {
+  background: linear-gradient(
+    90deg,
+    var(--border-color, #e5e7eb) 25%,
+    color-mix(in srgb, var(--border-color, #e5e7eb) 40%, white) 50%,
+    var(--border-color, #e5e7eb) 75%
+  );
+  background-size: 700px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 0.4rem;
+}
+
+.sk-back   { height: 1rem;   width: 8rem; }
+.sk-h1     { height: 2.8rem; width: 70%; margin-top: 0.5rem; }
+.sk-subtitle        { height: 1rem; width: 85%; }
+.sk-subtitle.short  { height: 1rem; width: 55%; }
+
+.sk-meta-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-color, #e5e7eb);
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+@media (min-width: 768px) {
+  .sk-meta-strip { flex-direction: row; justify-content: space-between; }
+}
+
+.sk-meta { height: 2.5rem; width: 7rem; border-radius: 0.4rem; }
+
+.sk-hero {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75rem;
+}
+
+.sk-text        { height: 0.9rem; width: 100%; }
+.sk-text.short  { height: 0.9rem; width: 60%; }
