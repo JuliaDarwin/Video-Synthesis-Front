@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { SelectedWork } from '../../components/selected-work/selected-work';
 import { Faqs } from '../../components/faqs/faqs';
 import { Metrics } from '../../components/metrics/metrics';
@@ -24,6 +25,13 @@ import { TeamAbout } from '../../components/team-about/team-about';
   styleUrl: './homepage.css',
   standalone: true,
 })
-export class Homepage {
+export class Homepage implements OnInit {
   showComingSoon = false;
+
+  constructor(private titleService: Title, private metaService: Meta) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Video Synthesis | Environmental & Ocean Storytelling');
+    this.metaService.updateTag({ name: 'description', content: 'Video Synthesis creates compelling video content, science storytelling and digital communications for environmental organisations, NGOs and sailing teams.' });
+  }
 }

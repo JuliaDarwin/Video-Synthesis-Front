@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { CtaSection } from '../../components/cta-section/cta-section';
 import { TeamAbout } from '../../components/team-about/team-about';
 import { Hero } from '../../components/hero/hero';
@@ -10,7 +11,13 @@ import { Hero } from '../../components/hero/hero';
   styleUrl: './team.css',
   standalone: true,
 })
-export class Team {
+export class Team implements OnInit {
+  constructor(private titleService: Title, private metaService: Meta) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Team | Video Synthesis');
+    this.metaService.updateTag({ name: 'description', content: 'Meet the Video Synthesis team — video editors, science communicators and storytellers working for ocean and environmental organisations.' });
+  }
   logos: any[] = [
     {
       src: 'logos/ocean-race.png',

@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Title, Meta } from '@angular/platform-browser';
 import { CaseStudy } from '../../models/case-study.model';
 import { CaseStudyService } from '../../services/case-study.service';
 
@@ -18,7 +18,13 @@ export class CaseStudyPage implements OnInit {
   isLoading = signal<boolean>(true);
   hasError = signal<boolean>(false);
 
-  constructor(private caseStudyService: CaseStudyService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  constructor(
+    private caseStudyService: CaseStudyService,
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
+    private titleService: Title,
+    private metaService: Meta
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -41,6 +47,10 @@ export class CaseStudyPage implements OnInit {
         console.log('Case study loaded successfully:', data);
         this.projectItem.set(data);
         this.isLoading.set(false);
+
+        // SEO
+        this.titleService.setTitle(`${data.title} | Video Synthesis`);
+        this.metaService.updateTag({ name: 'description', content: data.subhead || data.description || '' });
 
         if (data && data.metrics && Array.isArray(data.metrics)) {
           this.animatedMetrics.set(data.metrics.map(() => '0'));

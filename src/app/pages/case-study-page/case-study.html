@@ -68,7 +68,7 @@
       </div>
       @if (projectItem()?.thumbnail) {
         <div class="video-container">
-          <img [src]="projectItem()?.thumbnail">
+          <img [src]="projectItem()?.thumbnail" [alt]="projectItem()?.title">
         </div>
       }
     </div>
@@ -154,7 +154,7 @@
           
           @for(c of projectItem()?.campaign; track $index){
             <div>
-              <img [src]="c.image">
+              <img [src]="c.image" [alt]="c.title">
               <p>{{c.title}}</p>
             </div>
           }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { CtaSection } from '../../components/cta-section/cta-section';
 import { Router } from '@angular/router';
 import { Hero } from '../../components/hero/hero';
@@ -10,9 +11,13 @@ import { Hero } from '../../components/hero/hero';
   styleUrl: './services-page.css',
   standalone: true,
 })
-export class ServicesPage {
-  constructor(private router: Router) { }
+export class ServicesPage implements OnInit {
+  constructor(private router: Router, private titleService: Title, private metaService: Meta) { }
 
+  ngOnInit(): void {
+    this.titleService.setTitle('Services | Video Synthesis');
+    this.metaService.updateTag({ name: 'description', content: 'Video Synthesis offers video editing, science storytelling and digital communications strategy for environmental NGOs, research projects and sailing teams.' });
+  }
   services: Array<any> = [
     {
       id: '01',

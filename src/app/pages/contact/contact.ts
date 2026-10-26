@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { CtaSection } from '../../components/cta-section/cta-section';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Hero } from '../../components/hero/hero';
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, OnInit } from '@angular/core';
 import { ContactService, ContactForm } from '../../services/contact.service';
 
 @Component({
@@ -12,10 +13,17 @@ import { ContactService, ContactForm } from '../../services/contact.service';
   styleUrl: './contact.css',
   standalone: true
 })
-export class Contact {
+export class Contact implements OnInit {
   private fb = inject(FormBuilder);
   private contactService = inject(ContactService);
   private cdr = inject(ChangeDetectorRef);
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Contact | Video Synthesis');
+    this.metaService.updateTag({ name: 'description', content: 'Get in touch with Video Synthesis. Tell us about your project and we will get back to you.' });
+  }
 
   currentStep: number = 1;
   isSubmitted: boolean = false;
