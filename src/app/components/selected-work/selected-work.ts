@@ -15,6 +15,7 @@ export class SelectedWork implements OnInit {
   @Input() isAnimated = true;
   @Input() forHomepage = false;
   workItems = signal<CaseStudy[]>([]);
+  isLoading = signal<boolean>(true);
 
   constructor(private caseStudyService: CaseStudyService) { }
 
@@ -28,9 +29,11 @@ export class SelectedWork implements OnInit {
       next: data => {
         console.log('Successfully fetched cases:', data);
         this.workItems.set(data);
+        this.isLoading.set(false);
       },
       error: err => {
-        console.log('Error fetching case studsies', err);
+        console.log('Error fetching case studies', err);
+        this.isLoading.set(false);
       }
     });
   }

@@ -1,4 +1,21 @@
-@if (!showOnlyFeatured) {
+@if (isLoading()) {
+  <div class="skeleton-list">
+    @for (item of [1, 2, 3]; track item) {
+      <div class="skeleton-card">
+        <div class="skeleton-body">
+          <div class="skeleton-line skeleton-title"></div>
+          <div class="skeleton-line skeleton-text"></div>
+          <div class="skeleton-line skeleton-text short"></div>
+          <div class="skeleton-tags">
+            <div class="skeleton-tag"></div>
+            <div class="skeleton-tag"></div>
+          </div>
+        </div>
+        <div class="skeleton-image"></div>
+      </div>
+    }
+  </div>
+} @else if (!showOnlyFeatured) {
   <div class="showcase" [class.grid-layout]="!isAnimated">
     @for (item of filteredWorkItems; track item.title) {
       @if (!item.showCase || forHomepage) {
